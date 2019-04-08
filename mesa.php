@@ -1,3 +1,13 @@
+<?php 
+
+    include 'Database/database.php';
+
+    $conn = new PDO("mysql:host=$server;dbname=$database;", "$user", "");
+
+    $searchTables = $conn->prepare("SELECT idMesa, descricao, senha FROM mesa;");
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,6 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
     <link rel="stylesheet" href="src/css/webfood.css">
 
     <title>Document</title>
@@ -35,33 +46,25 @@
 
 
     <div class="mesas">
-        <div>
-            <a href="#modal" class="modal-open">Mesa 1</a>
-            <a href="#modal" class="modal-open">Mesa 2</a>
-        </div>
-        <div>
-            <a href="#modal" class="modal-open">Mesa 3</a>
-            <a href="#modal" class="modal-open">Mesa 4</a>
-        </div>
-        <div>
-            <a href="#modal" class="modal-open">Mesa 5</a>
-            <a href="#modal" class="modal-open">Mesa 6</a>
-        </div>
-        <div>
-            <a href="#modal" class="modal-open">Mesa 7</a>
-            <a href="#modal" class="modal-open">Mesa 8</a>
-        </div>
+        <?php 
+            if($searchTables->execute() > 0){
+                while($table = $searchTables->fetch(PDO::FETCH_ASSOC)){
+                    echo '<a href="#modal" class="mesa modal-open">' . $table["descricao"] . '</a>';
+                }
+            }   
+        ?>
     </div>
 
 
 
     <div class="modal" id="modal">
-        <div class="modal__content">
+        <form action="" method="POST" class="modal__content" >
             <a href="#" class="modal__close">&times;</a>
             <h2 class="modal__heading">autenticação</h2>
             <h1 id="numero">MESA</h1>
-            <input type="password" name="senha" id="senha" placeholder="Senha">
-            <button type="submit">Confirmar</button>
+            <input type="hidden" name="txtIdHidden" value="a">
+            <input type="password" name="txtPassword" id="senha" placeholder="Senha">
+            <input type="submit" name="btnSubmit" value="Entrar">
         </div>
     </div>
 

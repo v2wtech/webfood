@@ -117,10 +117,12 @@ header{
     width:100%;
   }
   
-  @media(max-width:786px){
+  @media(max-width:768px){
     .navbar-nav{display:none}
     .mesas{
-      margin-left: 30%
+      display: flex;
+      justify-content: center;
+      flex-flow: row wrap;
     }
     .escolher{
       position:absolute;
@@ -128,49 +130,52 @@ header{
         left:31%;
     }
     .modal-open{
-      height: 100px;
-      width: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 150px;
+      width: 150px;
       background-color: #3b5998;
-     display:inline-block;
-     color: white;
-     margin: 1em;
-     text-align: center;
+      color: white;
+      margin: 10px;
   }
 }
-  @media(min-width:786px){
+  @media(min-width:769px){
     /*.open-slide{display:none}*/
     img{
       position:absolute;
       top:15%;
       left:40%;
-  }
-  #p{
-    position:absolute;
-      top:50%;
-      left:43%;
-  }
-  .mesas{
-    margin-left: 35%
-  }
-  
-  .modal-open{
-   height: 200px;
-   width: 200px;
-   background-color: #3b5998;
-   display:inline-block;
-   color: white;
-   margin: 1em;
-   text-align: center;
-  }
+    }
+    #p{
+      position:absolute;
+        top:50%;
+        left:43%;
+    }
+    .mesas{
+      display: flex;
+      justify-content: center;
+      flex-flow: row wrap;
+    }
+    
+    .modal-open{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 200px;
+      width: 200px;
+      background-color: #3b5998;
+      color: white;
+      margin: 10px;
+    }
   }
 /* ------------ MESA-MODAL---------------- */
-
- 
-   a:link,
-   a:visited{
-    text-decoration: none;
-   }
+    a {
+      text-decoration: none;
+    }
    .modal{
+    display: flex;
+    justify-content: center;
     background-color: rgba(0,0,0, .8);
     width:100%;
     height: 100vh;
@@ -182,7 +187,11 @@ header{
     visibility: hidden;
     transition: all .5s;
    }
+
    .modal__content{
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
     width: 40%;
     height: 40%;
     background-color: #fff;
@@ -196,14 +205,17 @@ header{
     visibility: hidden;
     transition: all .5s;
    }
+
    #modal:target{
     opacity: 1;
     visibility: visible;
    }
+
    #modal:target .modal__content{
     opacity: 1;
     visibility: visible;
    }
+
    .modal__close{
     color: #363636;
     font-size: 2em;
@@ -211,18 +223,45 @@ header{
     top: .5em;
     right: 1em;
    }
+
    .modal__heading{
     color: dodgerblue;
     margin-bottom: 1em;
+    display: flex;
+    justify-content: center;
    }
+
    .modal__paragraph{
     line-height: 1.5em;
    }
-   input,label, button {
-     margin-left: 25%;
-     margin-bottom: 10px;
+
+   .modal__content input {
+    width: 240px;
+    height: 40px;
+    margin: 0 auto;
+    font-size: 1em;
+    margin-bottom: 5px;
    }
 
+   .modal__content input[type="password"] {
+    font-size: 1em;
+    padding: 5px;
+    border-style: solid 1px #ddd;
+   }
+
+  .modal__content input[type="submit"]{
+    height: 60px;
+    font-size: 1em;
+    border: none;
+    background: #1e72c5;
+    color: #fff;
+    font-weight: bold;
+  }
+
+  .modal__content input[type="submit"]:hover{
+    cursor: pointer;
+    background: #1a5b9c;
+}
  
 /* ------------ cardapio---------------- */
 
@@ -231,7 +270,7 @@ header{
   height: 100px;
   width: 100%;
   background-color: #3b5998;
- display:inline-block;
- margin-top: 5px;
- text-align: center;
+  display:inline-block;
+  margin-top: 5px;
+  text-align: center;
 }
