@@ -1,6 +1,7 @@
 
 /* ------------ global---------------- */
 
+
 html, body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
@@ -243,13 +244,26 @@ header{
     margin-bottom: 5px;
    }
 
+   .modal__content input[type="text"]{
+     display: flex;
+     text-align: center;
+    outline: none;
+    height: 60px;
+    font-size: 1.75em;
+    border: none;
+    color: #000;
+    font-weight: bold;
+  }
+
    .modal__content input[type="password"] {
+    border: 1px solid #ccc !important;
     font-size: 1em;
     padding: 5px;
     border-style: solid 1px #ddd;
    }
 
   .modal__content input[type="submit"]{
+    width: 250px;
     height: 60px;
     font-size: 1em;
     border: none;

@@ -39,7 +39,7 @@
 
     <div id="side-menu" class="side-nav">
         <a href="#" class="btn-close" onclick="closeSlideMenu()">&times;</a>
-        <a href="mesa.html">Mesas</a>
+        <a href="mesa.php">Mesas</a>
         <a href="cardapio.html">Cardápio</a>
         <a href="pedido.html">Meu Pedido</a>
     </div>
@@ -61,8 +61,7 @@
         <form action="" method="POST" class="modal__content" >
             <a href="#" class="modal__close">&times;</a>
             <h2 class="modal__heading">autenticação</h2>
-            <h1 id="numero">MESA</h1>
-            <input type="hidden" name="txtIdHidden" value="a">
+            <input type="text" id="mesa" value="---">
             <input type="password" name="txtPassword" id="senha" placeholder="Senha">
             <input type="submit" name="btnSubmit" value="Entrar">
         </div>
@@ -71,7 +70,7 @@
     <script>
         $(".modal-open").click(function () {
             var name = $(this).text();
-            $("#numero").html(name);
+            $("#mesa").val(name);
         });
         function openSlideMenu() {
             document.getElementById('side-menu').style.width = '250px';
