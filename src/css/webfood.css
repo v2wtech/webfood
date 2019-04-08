@@ -44,7 +44,6 @@ img{
   left:41%;
 }
 
-
   .navbar{
     background-color:#3b5998;
     overflow:hidden;
@@ -72,7 +71,6 @@ header{
   }
   
   .navbar a:hover{
-    background-color:#ddd;
     color:#000;
   }
   
