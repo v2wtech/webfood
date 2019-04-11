@@ -89,7 +89,7 @@ html, body {
     align-items: center;
     width: 100%;
     height: 18vh;
-    background: #3381b4;
+    /* background: #3381b4; */
     color: #000;
     font-size: 18pt;
     font-weight: bold;
@@ -122,7 +122,7 @@ html, body {
     
 }
 
-.productImage {
+.imageProduct {
     display: flex;
     width: 100%;
     height: 200px;
@@ -167,8 +167,8 @@ html, body {
     display: flex;
     justify-content: center;
     flex-flow: column;
-    width: 35%;
-    height: 35%;
+    width: 40%;
+    height: auto;
     background-color: #fff;
     position: absolute;
     top: 50%;
@@ -248,6 +248,68 @@ html, body {
     background: #1a5b9c;
 }
 
+.modal__content input[type="button"] {
+    width:  60px;
+    height: 60px;
+    background: transparent;
+    font-weight: bold;
+    font-size: 16pt;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    color: #ccc;
+    outline: none;
+}
+
+/* ----- modal cardapio ----- */
+.modal__content > div {
+    width: 250px;
+    height: auto;
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    justify-items: center;
+    justify-self: center;
+    align-content: center;
+    align-items: center;
+    align-self: center;
+    margin: 20px;
+}
+
+#inImageProduct  {
+    display: flex;
+    align-self: center;
+    margin-top: 20px;
+    width: 50%;
+    height: 200px;
+}
+
+#inDescriptionProduct, #inPriceProduct {
+    display: flex;
+    align-self: center;
+}
+
+#btnMore:hover {
+    color: #308a1e;
+    border-color: #308a1e
+}
+
+#btnLess:hover {
+    color: #d83333fc;
+    border-color: #d83333fc;
+}
+
+#inAmount {
+    width:  100px;
+    color: #308a1e;
+}
+
+#btnAddOrder {
+    background: #ff9100;
+}
+
+#btnAddOrder:hover {
+    background: #e28a18;    
+}
 @media screen and (max-width: 600px){
     /* ----- Mesa.php ----- */
     .table {
@@ -258,7 +320,7 @@ html, body {
     /* ----- Modal ----- */
     .modal__content{
         width: 80%;
-        height: 40%;
+        height: auto;
     }
 
 }
@@ -273,8 +335,8 @@ html, body {
     
     /* ----- Modal ----- */
     .modal__content{
-        width: 40%;
-        height: 40%;
+        width: 50%;
+        height: auto;
     }
 
 }

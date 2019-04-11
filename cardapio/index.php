@@ -3,8 +3,6 @@
         session_start();
     }
 
-    // echo $_SESSION['mesa'];
-
     include '../database/database.php';
     $conn = new PDO("mysql:host=$server;dbname=$database;", "$user", "");
     $categories = $conn->prepare("SELECT idCategoria, descricao FROM categoria;");
@@ -42,9 +40,9 @@
                                         
                                         if($products->execute() > 0)
                                             while($product = $products->fetch(PDO::FETCH_ASSOC)){
-                                                echo '<a href="#" class="product">';
-                                                echo '<img src="../src/assets/produtos/teste.png" class="productImage">';
-                                                echo '<span class="descriptionProduct">'.$product["descricao"].'</span><br/>';
+                                                echo '<a href="#modal" class="product">';
+                                                echo '<img src="../src/assets/produtos/teste.png" class="imageProduct">';
+                                                echo '<span class="descriptionProduct">'.$product["descricao"].'</span>';
                                                 echo '<span class="priceProduct"> R$ '.$product["preco"].'</span>';
                                                 echo '</a>';
                                             }
@@ -53,10 +51,43 @@
                             }
                     ?> 
             </div>
+
+           
         </main>
+
+        <div class="modal" id="modal">
+                <form action="#" method="POST" class="modal__content">
+
+                    <a href="#" class="modal__close">&times;</a>
+
+                    <!-- <img id="inImageProduct" src=""> -->
+                    <h2 id="inDescriptionProduct"></h2>
+                    <p id="inPriceProduct"></p>
+                    <div>
+                        <input type="button" class="btnLessMore" id="btnLess" value="-" >
+                        <input type="text" name="txtAmount" id="inAmount" value="1" style="background: #fff;cursor:context-menu;">
+                        <input type="button" class="btnLessMore" id="btnMore" value="+" >
+                    </div>
+
+                    <input type="submit" id="btnAddOrder" name="btnSubmit" value="Adicionar ao Pedido">
+                </form>
+            </div>
     </div>
 
     <!-- scripts -->
     <script src="../src/js/webfood.js"></script>
+    <script>
+        window.onload = () => {
+            loadModalProducts()
+
+            $('#btnLess').addEventListener('click', function(){
+                lessProduct();
+            });
+
+            $('#btnMore').addEventListener('click', function(){
+                moreProduct();
+            });
+        }
+    </script>
 </body>
 </html>
