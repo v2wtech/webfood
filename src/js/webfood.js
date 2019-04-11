@@ -4,12 +4,33 @@ const $ = function(selector){
 }.bind(document)
 
 
-
-let loadFuncTables = () => {
-    for(var i=0;i<$('.table').length;i++){
-        $('.table')[i].addEventListener('click', function(el){
-            $('#inTable').value = el.target.innerHTML
-        })
-    }          
+// ---> Mesa
+let loadFuncTables = () => {    
+    $('.table').forEach(table => table.onclick = () => {
+        $('#inTable').value = table.innerHTML
+    })
 }
 
+
+
+
+// ---> Cardápio
+let loadModalProducts = () => {
+          
+    $('.product').forEach(product => product.onclick = () => {
+        // $('#inImageProduct').src = product.children[0].currentSrc;
+        $('#inDescriptionProduct').innerHTML = product.children[1].innerHTML;
+        $('#inPriceProduct').innerHTML =  product.children[2].innerHTML;
+    });
+
+   
+}
+
+let lessProduct = () => {
+    if($('#inAmount').value > 1 )
+        $('#inAmount').value--;
+}
+
+let moreProduct = () => {
+    $('#inAmount').value++;
+}
