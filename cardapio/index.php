@@ -36,11 +36,12 @@
                                     echo '<div class="products">';
 
                                         $categoryId = $category["idCategoria"];
-                                        $products = $conn->prepare("SELECT descricao,preco FROM produto WHERE idCategoria = $categoryId");
+                                        $products = $conn->prepare("SELECT idProduto, descricao, preco FROM produto WHERE idCategoria = $categoryId");
                                         
                                         if($products->execute() > 0)
                                             while($product = $products->fetch(PDO::FETCH_ASSOC)){
                                                 echo '<a href="#modal" class="product">';
+                                                echo '<input type="hidden" class="idProduct" value="'.$product["idProduto"].'">';
                                                 echo '<img src="../src/assets/produtos/teste.png" class="imageProduct">';
                                                 echo '<span class="descriptionProduct">'.$product["descricao"].'</span>';
                                                 echo '<span class="priceProduct"> R$ '.$product["preco"].'</span>';
@@ -60,7 +61,7 @@
 
                     <a href="#" class="modal__close">&times;</a>
 
-                    <!-- <img id="inImageProduct" src=""> -->
+                    <input type="hidden" id="inIdProduct" value="">
                     <h2 id="inDescriptionProduct"></h2>
                     <p id="inPriceProduct"></p>
                     <div>
