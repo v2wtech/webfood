@@ -12,6 +12,17 @@ let loadFuncTables = () => {
 }
 
 // ---> Cardápio
+
+
+let loadProductsCategory = () => {
+    for(var i=0;i<$('.category').lenght;i++){
+        $('.category')[i].addEventListener('click', function(){
+            $('.products')[i].classList.remove("products-close");
+        })
+    }
+}
+
+
 let loadModalProducts = () => {
           
     $('.product').forEach(product => product.onclick = () => {
