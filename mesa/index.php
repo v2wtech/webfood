@@ -1,7 +1,10 @@
 <?php
-    // if(session_status() !== PHP_SESSION_ACTIVE){
-    //     header('Location: ../carapio/index.php');
-    // }
+    if(session_status() !== PHP_SESSION_ACTIVE){
+        session_start();
+
+        if(isset($_SESSION['mesa']))
+            header('Location: ../cardapio/index.php');
+    }
 
     include '../database/database.php';
     $conn = new PDO("mysql:host=$server;dbname=$database;", "$user", "");
