@@ -1,6 +1,9 @@
 <?php
     if(session_status() !== PHP_SESSION_ACTIVE){
         session_start();
+
+        if(!isset($_SESSION['mesa']))
+            header('location: ../mesa/index.php');
     }
 
     include '../database/database.php';
@@ -25,7 +28,7 @@
 <body>
     <div class="wrapper">
         <header id="header">
-            <h2>Cardápio</h2>
+            <h2>Cardápio | <a href="pedido.php">Pedido</a></h2> 
         </header>
 
         <main id="content">
@@ -54,16 +57,14 @@
                             }
                     ?> 
             </div>
-
-           
         </main>
-
+        
         <div class="modal" id="modal">
-                <form action="#" method="POST" class="modal__content">
+                <form action="pedido.php" method="POST" class="modal__content">
 
                     <a href="#" class="modal__close">&times;</a>
 
-                    <input type="hidden" id="inIdProduct" value="">
+                    <input type="hidden" name="txtIdProduct" id="inIdProduct" value="">
                     <h2 id="inDescriptionProduct"></h2>
                     <p id="inPriceProduct"></p>
                     <div>
@@ -76,7 +77,7 @@
                 </form>
             </div>
     </div>
-
+    
     <!-- scripts -->
     <script src="../src/js/webfood.js"></script>
     <script>
@@ -85,7 +86,6 @@
             loadModalProducts()
 
             loadProductsCategory()
-
 
             $('#btnLess').addEventListener('click', function(){
                 lessProduct();

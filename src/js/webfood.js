@@ -3,7 +3,6 @@ const $ = function(selector){
         document.querySelectorAll(selector):document.querySelectorAll(selector)[0]
 }.bind(document)
 
-
 // ---> Mesa
 let loadFuncTables = () => {    
     $('.table').forEach(table => table.onclick = () => {
@@ -12,19 +11,11 @@ let loadFuncTables = () => {
 }
 
 // ---> Cardápio
-
-
 let loadProductsCategory = () => {
-    for(var i=0;i<$('.category').lenght;i++){
-        $('.category')[i].addEventListener('click', function(){
-            $('.products')[i].classList.remove("products-close");
-        })
-    }
+    $('.category').forEach(category => category.onclick = () => category.nextElementSibling.classList.toggle('products-close'))
 }
 
-
 let loadModalProducts = () => {
-          
     $('.product').forEach(product => product.onclick = () => {
         $('#inIdProduct').value = product.children[0].value
         $('#inDescriptionProduct').innerHTML = product.children[2].innerHTML;
