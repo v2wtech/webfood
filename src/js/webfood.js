@@ -12,14 +12,8 @@ let loadFuncTables = () => {
 }
 
 // ---> Cardápio
-
-
 let loadProductsCategory = () => {
-    for(var i=0;i<$('.category').lenght;i++){
-        $('.category')[i].addEventListener('click', function(){
-            $('.products')[i].classList.remove("products-close");
-        })
-    }
+    $('.category').forEach(category => category.onclick = () => category.nextElementSibling.classList.toggle('products-close'))
 }
 
 
