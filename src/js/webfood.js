@@ -11,19 +11,25 @@ let loadFuncTables = () => {
     })
 }
 
-
-
-
 // ---> Cardápio
+
+
+let loadProductsCategory = () => {
+    for(var i=0;i<$('.category').lenght;i++){
+        $('.category')[i].addEventListener('click', function(){
+            $('.products')[i].classList.remove("products-close");
+        })
+    }
+}
+
+
 let loadModalProducts = () => {
           
     $('.product').forEach(product => product.onclick = () => {
-        // $('#inImageProduct').src = product.children[0].currentSrc;
-        $('#inDescriptionProduct').innerHTML = product.children[1].innerHTML;
-        $('#inPriceProduct').innerHTML =  product.children[2].innerHTML;
-    });
-
-   
+        $('#inIdProduct').value = product.children[0].value
+        $('#inDescriptionProduct').innerHTML = product.children[2].innerHTML;
+        $('#inPriceProduct').innerHTML =  product.children[3].innerHTML;
+    });  
 }
 
 let lessProduct = () => {

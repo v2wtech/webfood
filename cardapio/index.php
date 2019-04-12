@@ -34,15 +34,16 @@
                         if($categories->execute() > 0)
                             while($category = $categories->fetch(PDO::FETCH_ASSOC)){
                                 echo '<div class="categoryProducts">';
-                                    echo '<div class="category" id="' . $category["descricao"] . '">' . $category["descricao"] . '</div>';
-                                    echo '<div class="products">';
+                                    echo '<div class="category">' . $category["descricao"] . '</div>';
+                                    echo '<div class="products-open products-close">';
 
                                         $categoryId = $category["idCategoria"];
-                                        $products = $conn->prepare("SELECT descricao,preco FROM produto WHERE idCategoria = $categoryId");
+                                        $products = $conn->prepare("SELECT idProduto, descricao, preco FROM produto WHERE idCategoria = $categoryId");
                                         
                                         if($products->execute() > 0)
                                             while($product = $products->fetch(PDO::FETCH_ASSOC)){
                                                 echo '<a href="#modal" class="product">';
+                                                echo '<input type="hidden" class="idProduct" value="'.$product["idProduto"].'">';
                                                 echo '<img src="../src/assets/produtos/teste.png" class="imageProduct">';
                                                 echo '<span class="descriptionProduct">'.$product["descricao"].'</span>';
                                                 echo '<span class="priceProduct"> R$ '.$product["preco"].'</span>';
@@ -62,12 +63,12 @@
 
                     <a href="#" class="modal__close">&times;</a>
 
-                    <!-- <img id="inImageProduct" src=""> -->
+                    <input type="hidden" id="inIdProduct" value="">
                     <h2 id="inDescriptionProduct"></h2>
                     <p id="inPriceProduct"></p>
                     <div>
                         <input type="button" class="btnLessMore" id="btnLess" value="-" >
-                        <input type="text" name="txtAmount" id="inAmount" value="1" style="background: #fff;cursor:context-menu;">
+                        <input type="text" name="txtAmount" id="inAmount" value="1">
                         <input type="button" class="btnLessMore" id="btnMore" value="+" >
                     </div>
 
@@ -80,7 +81,11 @@
     <script src="../src/js/webfood.js"></script>
     <script>
         window.onload = () => {
+            
             loadModalProducts()
+
+            loadProductsCategory()
+
 
             $('#btnLess').addEventListener('click', function(){
                 lessProduct();
