@@ -1,4 +1,5 @@
 <?php
+
     include '../database/database.php';
 
     if(!empty($_POST)){

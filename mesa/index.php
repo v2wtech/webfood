@@ -1,4 +1,5 @@
 <?php
+
     if(session_status() !== PHP_SESSION_ACTIVE){
         session_start();
 
@@ -9,6 +10,7 @@
     include '../database/database.php';
     $conn = new PDO("mysql:host=$server;dbname=$database;", "$user", "");
     $tables = $conn->prepare("SELECT descricao FROM mesa;");
+    
 ?>
 <!DOCTYPE html>
 <html>
