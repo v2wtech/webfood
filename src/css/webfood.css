@@ -58,10 +58,14 @@ html, body {
 }
  /* ----- mesa / cardapio ----- */
 
-.tables, .categories, .products {
+.tables, .categories, .products-open {
     display: flex;
     justify-content: center;
     flex-flow: row wrap;
+}
+
+.products-close {
+    display: none;
 }
 
 /* ----- mesa ----- */
@@ -119,7 +123,6 @@ html, body {
     border: 1px solid #f3f3f3;
     margin: 5px;
     box-shadow: 3px 3px 5px #999;
-    
 }
 
 .imageProduct {
@@ -310,6 +313,8 @@ html, body {
 #btnAddOrder:hover {
     background: #e28a18;    
 }
+
+
 @media screen and (max-width: 600px){
     /* ----- Mesa.php ----- */
     .table {
