@@ -1,0 +1,426 @@
+* {
+    text-decoration: none;
+    list-style: none;
+}
+
+/* SCROLL BAR */
+
+::-webkit-scrollbar-track {
+    background-color: #F4F4F4;
+}
+::-webkit-scrollbar {
+    width: 15px;
+    background: #F4F4F4;
+}
+::-webkit-scrollbar-thumb {
+    background: #c4c4c4;
+}
+
+/* Paginas */
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 12pt;
+}
+
+.wrapper {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
+}
+
+#header {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 10vh;
+    background: #d83333fc;
+    display: flex;
+    justify-content: center;
+}
+
+#header h2 {
+    color: #fff;
+    display: flex;
+    align-self: center;
+
+}
+
+#content {
+    width: 100%;
+    height: 90vh;
+    background: #fefefe;
+}
+
+
+ /* ----- mesa / cardapio ----- */
+
+.tables, .categories, .products {
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+}
+
+/* ----- mesa ----- */
+
+.table {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 200px;
+    background: #308a1e;
+    margin: 10px;
+    color: #fff;
+    font-size: 18pt;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* ----- categoria ----- */
+
+.category {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 18vh;
+    /* background: #3381b4; */
+    color: #000;
+    font-size: 18pt;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+
+/* ----- categoria / produto ----- */
+.categoryProducts {
+    display:  flex;
+    justify-content: center;
+    flex-flow: row wrap;
+    width: 100%;
+    background: transparent;
+}
+
+/* ----- produto ----- */
+.product {
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+    width: 250px;
+    height: 300px;
+    border-radius: 5px;
+    border: 1px solid #f3f3f3;
+    margin: 5px;
+    box-shadow: 3px 3px 5px #999;
+    
+}
+
+.imageProduct {
+    display: flex;
+    width: 100%;
+    height: 200px;
+    border-radius: 5px 5px 0 0;
+}
+
+.descriptionProduct {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    color: #000;
+    font-weight: 600;
+}
+
+.priceProduct {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    color: #777;
+}
+
+/* ----- Modal ----- */
+
+.modal{
+    display: flex;
+    justify-content: center;
+    background-color: rgba(0,0,0, .8);
+    width:100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .5s;
+}
+
+.modal__content{
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
+    width: 40%;
+    height: auto;
+    background-color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 2em;
+    border-radius: 1em;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .5s;
+}
+
+#modal:target{
+    opacity: 1;
+    visibility: visible;
+}
+
+#modal:target .modal__content{
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal__close{
+    color: #363636;
+    font-size: 2em;
+    position: absolute;
+    top: .5em;
+    right: 1em;
+    text-decoration: none;
+}
+
+.modal__heading{
+    color: dodgerblue;
+    margin-bottom: 1em;
+    display: flex;
+    justify-content: center;
+}
+
+.modal__content input {
+    width: 240px;
+    height: 40px;
+    margin: 0 auto;
+    font-size: 12pt;
+    margin-bottom: 5px;
+}
+
+.modal__content input[type="text"] {
+    display: flex;
+    text-align: center;
+    outline: none;
+    height: 60px;
+    font-size: 16pt;
+    border: none;
+    color: #000;
+    font-weight: bold;
+}
+
+.modal__content input[type="password"] {
+    border: 1px solid #ccc !important;
+    font-size: 12pt;
+    padding: 5px;
+    border-style: solid 1px #ddd;
+}
+
+.modal__content input[type="submit"] {
+    width: 250px;
+    height: 60px;
+    font-size: 1em;
+    border: none;
+    background: #1e72c5;
+    color: #fff;
+    font-weight: bold;
+}
+
+.modal__content input[type="submit"]:hover {
+    cursor: pointer;
+    background: #1a5b9c;
+}
+
+.modal__content input[type="button"] {
+    width:  60px;
+    height: 60px;
+    background: transparent;
+    font-weight: bold;
+    font-size: 16pt;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    color: #ccc;
+    outline: none;
+}
+
+/* ----- modal cardapio ----- */
+.modal__content > div {
+    width: 250px;
+    height: auto;
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    justify-items: center;
+    justify-self: center;
+    align-content: center;
+    align-items: center;
+    align-self: center;
+    margin: 20px;
+}
+
+#inImageProduct  {
+    display: flex;
+    align-self: center;
+    margin-top: 20px;
+    width: 50%;
+    height: 200px;
+}
+
+#inDescriptionProduct, #inPriceProduct {
+    display: flex;
+    align-self: center;
+}
+
+#btnMore:hover {
+    color: #308a1e;
+    border-color: #308a1e
+}
+
+#btnLess:hover {
+    color: #d83333fc;
+    border-color: #d83333fc;
+}
+
+#inAmount {
+    width:  100px;
+    color: #308a1e;
+}
+
+#btnAddOrder {
+    background: #ff9100;
+}
+
+#btnAddOrder:hover {
+    background: #e28a18;    
+}
+
+/* --------------pedido---------------- */
+footer{
+    width: 100%;
+    height: 100%;
+    background: #d83333fc;
+    display: flex;
+}
+
+.valor_pedido{
+    color: #fff;
+    display: flex;
+    float: left;
+}
+
+.total_pedido{
+    color:black;
+    display: flex;
+    float: right;
+}
+
+.item_pedido{
+    margin-top: 30px;
+    padding: 0;
+    top: 40px;
+    left: 15px;
+    right: 15px;
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    border: 1px;
+    border-style: solid;
+    border-color:gray;
+}
+.item_pedido h3{
+    position: relative;
+    display: flex;
+}
+
+.description{
+    margin-top: 20px;
+    display: flex;
+    width: 50%;
+    height: auto;
+    color: #000;
+    font-weight: 600;
+    margin-left: 15px;
+    
+}
+
+.price{
+    margin-top: 20px;
+    display: flex;
+    width: 50%;
+    height: auto;
+    
+}
+#btnEnviar{
+    width: 250px;
+    height: 60px;
+    font-size: 1em;
+    border: none;
+    background: #1e72c5;
+    color: #fff;
+    font-weight: bold;
+    position:absolute;
+    top: 98%;
+    left: 40%;
+     
+}
+#btnExcluir{
+    width: 70px;
+    height: 40px;
+    background: transparent;
+    font-weight: bold;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    color: #ccc;
+    margin: 15px;
+    
+}
+
+@media screen and (max-width: 600px){
+    /* ----- Mesa.php ----- */
+    .table {
+        width: 150px;
+        height: 150px;
+    }
+    
+    /* ----- Modal ----- */
+    .modal__content{
+        width: 80%;
+        height: auto;
+    }
+
+}
+
+@media screen and (min-width: 601px) and (max-width: 768px){
+
+    /* ----- Mesa.php ----- */
+    .table {
+        width: 150px;
+        height: 150px;
+    }
+    
+    /* ----- Modal ----- */
+    .modal__content{
+        width: 50%;
+        height: auto;
+    }
+
+}
