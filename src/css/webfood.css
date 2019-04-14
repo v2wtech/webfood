@@ -56,29 +56,18 @@ html, body {
     height: 90vh;
     background: #fefefe;
 }
-<<<<<<< HEAD
-
-
- /* ----- mesa / cardapio ----- */
-
-.tables, .categories, .products {
-=======
  /* ----- mesa / cardapio ----- */
 
 .tables, .categories, .products-open {
->>>>>>> 67ebd63a43468dd5b059fe8990be87831f078dd4
     display: flex;
     justify-content: center;
     flex-flow: row wrap;
 }
 
-<<<<<<< HEAD
-=======
 .products-close {
     display: none;
 }
 
->>>>>>> 67ebd63a43468dd5b059fe8990be87831f078dd4
 /* ----- mesa ----- */
 
 .table {
@@ -134,10 +123,6 @@ html, body {
     border: 1px solid #f3f3f3;
     margin: 5px;
     box-shadow: 3px 3px 5px #999;
-<<<<<<< HEAD
-    
-=======
->>>>>>> 67ebd63a43468dd5b059fe8990be87831f078dd4
 }
 
 .imageProduct {
@@ -329,7 +314,6 @@ html, body {
     background: #e28a18;    
 }
 
-<<<<<<< HEAD
 /* --------------pedido---------------- */
 footer{
     width: 100%;
@@ -419,8 +403,6 @@ position: absolute;
     margin-left: auto;
     
 }
-=======
->>>>>>> 67ebd63a43468dd5b059fe8990be87831f078dd4
 
 @media screen and (max-width: 600px){
     /* ----- Mesa.php ----- */
@@ -434,15 +416,12 @@ position: absolute;
         width: 80%;
         height: auto;
     }
-<<<<<<< HEAD
    
     .pedir{
         top: 89%;
         width: inherit;
         position: absolute;
         }
-=======
->>>>>>> 67ebd63a43468dd5b059fe8990be87831f078dd4
 
 }
 
