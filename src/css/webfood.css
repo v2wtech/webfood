@@ -56,6 +56,8 @@ html, body {
     height: 90vh;
     background: #fefefe;
 }
+
+
  /* ----- mesa / cardapio ----- */
 
 .tables, .categories, .products-open {
@@ -405,10 +407,47 @@ position: absolute;
 }
 
 @media screen and (max-width: 600px){
-    /* ----- Mesa.php ----- */
+
+    /* ----- Mesa ----- */
     .table {
         width: 150px;
         height: 150px;
+    }
+
+    /* ----- cardapio ----- */
+    .products-open {
+        max-width: 100%;
+        flex-flow: column;
+    }
+
+    /* ----- produto ----- */
+    .product {
+        border-radius: 0;
+        border: none;
+        align-items: center;
+        width: 100%;
+        height: 100px;
+        margin: 1px auto;
+        padding: 0;
+    }
+
+    .imageProduct {
+        width: 25%;
+        height: 100px;
+        border-radius: 0;
+    }
+
+    .descriptionProduct {
+        width: 50%;
+        height: auto;
+        color: #000;
+        font-weight: 600;
+    }
+
+    .priceProduct {
+        width: 25%;
+        height: auto;
+        color: #777;
     }
     
     /* ----- Modal ----- */
@@ -427,10 +466,15 @@ position: absolute;
 
 @media screen and (min-width: 601px) and (max-width: 768px){
 
-    /* ----- Mesa.php ----- */
+    /* ----- Mesa ----- */
     .table {
         width: 150px;
         height: 150px;
+    }
+
+    /* ----- Produto ----- */
+    .product {
+        width: 100%;
     }
     
     /* ----- Modal ----- */
