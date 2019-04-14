@@ -1,4 +1,13 @@
 <?php
+<<<<<<< HEAD
+    // if(session_status() !== PHP_SESSION_ACTIVE){
+    //     header('Location: ../carapio/index.php');
+    // }
+
+    include '../database/database.php';
+    $conn = new PDO("mysql:host=$server;dbname=$database;", "$user", "");
+    $tables = $conn->prepare("SELECT descricao FROM mesa;");
+=======
 
     if(session_status() !== PHP_SESSION_ACTIVE){
         session_start();
@@ -11,6 +20,7 @@
     $conn = new PDO("mysql:host=$server;dbname=$database;", "$user", "");
     $tables = $conn->prepare("SELECT descricao FROM mesa;");
     
+>>>>>>> 67ebd63a43468dd5b059fe8990be87831f078dd4
 ?>
 <!DOCTYPE html>
 <html>
