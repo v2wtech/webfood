@@ -3,7 +3,10 @@ const $ = function(selector){
         document.querySelectorAll(selector):document.querySelectorAll(selector)[0]
 }.bind(document)
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 67ebd63a43468dd5b059fe8990be87831f078dd4
 // ---> Mesa
 let loadFuncTables = () => {    
     $('.table').forEach(table => table.onclick = () => {
@@ -11,6 +14,7 @@ let loadFuncTables = () => {
     })
 }
 
+<<<<<<< HEAD
 
 
 
@@ -24,6 +28,19 @@ let loadModalProducts = () => {
     });
 
    
+=======
+// ---> Cardápio
+let loadProductsCategory = () => {
+    $('.category').forEach(category => category.onclick = () => category.nextElementSibling.classList.toggle('products-close'))
+}
+
+let loadModalProducts = () => {
+    $('.product').forEach(product => product.onclick = () => {
+        $('#inIdProduct').value = product.children[0].value
+        $('#inDescriptionProduct').innerHTML = product.children[2].innerHTML;
+        $('#inPriceProduct').innerHTML =  product.children[3].innerHTML;
+    });  
+>>>>>>> 67ebd63a43468dd5b059fe8990be87831f078dd4
 }
 
 let lessProduct = () => {
