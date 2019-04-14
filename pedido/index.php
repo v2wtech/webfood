@@ -74,11 +74,6 @@
 
     <!-- scripts -->
     <script src="../src/js/webfood.js"></script>
-    <script>
-        window.onload = () => {
-            loadFuncTables()
-        }
-    </script>
 </body>
 
 </html>

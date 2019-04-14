@@ -56,29 +56,20 @@ html, body {
     height: 90vh;
     background: #fefefe;
 }
-<<<<<<< HEAD
 
 
- /* ----- mesa / cardapio ----- */
-
-.tables, .categories, .products {
-=======
  /* ----- mesa / cardapio ----- */
 
 .tables, .categories, .products-open {
->>>>>>> 67ebd63a43468dd5b059fe8990be87831f078dd4
     display: flex;
     justify-content: center;
     flex-flow: row wrap;
 }
 
-<<<<<<< HEAD
-=======
 .products-close {
     display: none;
 }
 
->>>>>>> 67ebd63a43468dd5b059fe8990be87831f078dd4
 /* ----- mesa ----- */
 
 .table {
@@ -134,10 +125,6 @@ html, body {
     border: 1px solid #f3f3f3;
     margin: 5px;
     box-shadow: 3px 3px 5px #999;
-<<<<<<< HEAD
-    
-=======
->>>>>>> 67ebd63a43468dd5b059fe8990be87831f078dd4
 }
 
 .imageProduct {
@@ -329,7 +316,6 @@ html, body {
     background: #e28a18;    
 }
 
-<<<<<<< HEAD
 /* --------------pedido---------------- */
 footer{
     width: 100%;
@@ -419,14 +405,49 @@ position: absolute;
     margin-left: auto;
     
 }
-=======
->>>>>>> 67ebd63a43468dd5b059fe8990be87831f078dd4
 
 @media screen and (max-width: 600px){
-    /* ----- Mesa.php ----- */
+
+    /* ----- Mesa ----- */
     .table {
         width: 150px;
         height: 150px;
+    }
+
+    /* ----- cardapio ----- */
+    .products-open {
+        max-width: 100%;
+        flex-flow: column;
+    }
+
+    /* ----- produto ----- */
+    .product {
+        border-radius: 0;
+        border: none;
+        align-items: center;
+        width: 100%;
+        height: 100px;
+        margin: 1px auto;
+        padding: 0;
+    }
+
+    .imageProduct {
+        width: 25%;
+        height: 100px;
+        border-radius: 0;
+    }
+
+    .descriptionProduct {
+        width: 50%;
+        height: auto;
+        color: #000;
+        font-weight: 600;
+    }
+
+    .priceProduct {
+        width: 25%;
+        height: auto;
+        color: #777;
     }
     
     /* ----- Modal ----- */
@@ -434,24 +455,26 @@ position: absolute;
         width: 80%;
         height: auto;
     }
-<<<<<<< HEAD
    
     .pedir{
         top: 89%;
         width: inherit;
         position: absolute;
         }
-=======
->>>>>>> 67ebd63a43468dd5b059fe8990be87831f078dd4
 
 }
 
 @media screen and (min-width: 601px) and (max-width: 768px){
 
-    /* ----- Mesa.php ----- */
+    /* ----- Mesa ----- */
     .table {
         width: 150px;
         height: 150px;
+    }
+
+    /* ----- Produto ----- */
+    .product {
+        width: 100%;
     }
     
     /* ----- Modal ----- */
