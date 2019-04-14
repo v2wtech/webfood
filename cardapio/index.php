@@ -7,8 +7,10 @@
     }
 
     include '../database/database.php';
-    $conn = new PDO("mysql:host=$server;dbname=$database;", "$user", "");
+
+    $conn = new PDO("mysql:host=$server;dbname=$database;", $user, $password);
     $categories = $conn->prepare("SELECT idCategoria, descricao FROM categoria;");
+    
 ?>
 <!DOCTYPE html>
 <html>

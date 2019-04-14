@@ -1,20 +1,19 @@
 <?php
-
     include '../database/database.php';
 
     if(!empty($_POST)){
         
         $description = $_POST['txtDescription'];
-        $password = $_POST['txtPassword'];
+        $passwordTable = $_POST['txtPassword'];
         
         try{
-            $conn = new PDO("mysql:host=$server;dbname=$database;", "$user", "");
+            $conn = new PDO("mysql:host=$server;dbname=$database;", $user, $password);
 
             $tables = $conn->prepare("SELECT idMesa, senha FROM mesa WHERE descricao = '$description';");
             
             $table = $tables->fetch($tables->execute());
 
-            if($password == $table["senha"]){
+            if($passwordTable == $table["senha"]){
                 if(session_status() !== PHP_SESSION_ACTIVE){
                     session_start();
                     $_SESSION['idMesa'] = $table['idMesa'];

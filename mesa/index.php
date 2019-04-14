@@ -8,7 +8,7 @@
     }
 
     include '../database/database.php';
-    $conn = new PDO("mysql:host=$server;dbname=$database;", "$user", "");
+    $conn = new PDO("mysql:host=$server;dbname=$database;", $user, $password);
     $tables = $conn->prepare("SELECT descricao FROM mesa;");
     
 ?>
