@@ -60,10 +60,14 @@ html, body {
 
  /* ----- mesa / cardapio ----- */
 
-.tables, .categories, .products {
+.tables, .categories, .products-open {
     display: flex;
     justify-content: center;
     flex-flow: row wrap;
+}
+
+.products-close {
+    display: none;
 }
 
 /* ----- mesa ----- */
@@ -121,7 +125,6 @@ html, body {
     border: 1px solid #f3f3f3;
     margin: 5px;
     box-shadow: 3px 3px 5px #999;
-    
 }
 
 .imageProduct {
@@ -316,89 +319,135 @@ html, body {
 /* --------------pedido---------------- */
 footer{
     width: 100%;
-    height: 100%;
+    height: 12%;
     background: #d83333fc;
     display: flex;
+    position: absolute;
+}
+
+.pedir{
+top: 92%;
+width: inherit;
+position: absolute;
 }
 
 .valor_pedido{
-    color: #fff;
     display: flex;
     float: left;
+    font-size: 1em;
+    border: none;
+    margin: 15px;
 }
 
 .total_pedido{
-    color:black;
     display: flex;
     float: right;
+    font-size: 1em;
+    border: none;
+    margin: 15px;
 }
 
 .item_pedido{
-    margin-top: 30px;
-    padding: 0;
-    top: 40px;
-    left: 15px;
-    right: 15px;
+    margin-top: 2%;
     width: 100%;
-    height: 10vh;
     display: flex;
     border: 1px;
     border-style: solid;
-    border-color:gray;
+    border-color: gray;
 }
 .item_pedido h3{
     position: relative;
     display: flex;
 }
 
-.description{
-    margin-top: 20px;
-    display: flex;
-    width: 50%;
-    height: auto;
-    color: #000;
-    font-weight: 600;
-    margin-left: 15px;
-    
+.description{ 
+    margin-left: 2%;
 }
 
 .price{
-    margin-top: 20px;
-    display: flex;
-    width: 50%;
-    height: auto;
-    
+    margin-top: 25px;
+    margin-left: 2%;
+    position: absolute; 
+    margin-right: 3%;
+}
+.x{
+    margin-top: 25px;
+    margin-right: 3%;
+}
+
+.qntd{
+    margin-top: 25px;
 }
 #btnEnviar{
-    width: 250px;
-    height: 60px;
+    width: 142px;
+    height: 67%;
     font-size: 1em;
     border: none;
     background: #1e72c5;
     color: #fff;
     font-weight: bold;
-    position:absolute;
-    top: 98%;
+    position: absolute;
+    margin-top: 1%;
     left: 40%;
+    cursor: pointer;
      
 }
 #btnExcluir{
     width: 70px;
     height: 40px;
+    display: flex;
     background: transparent;
     font-weight: bold;
     cursor: pointer;
     border: 1px solid #ccc;
     color: #ccc;
     margin: 15px;
+    margin-left: auto;
     
 }
 
 @media screen and (max-width: 600px){
-    /* ----- Mesa.php ----- */
+
+    /* ----- Mesa ----- */
     .table {
         width: 150px;
         height: 150px;
+    }
+
+    /* ----- cardapio ----- */
+    .products-open {
+        max-width: 100%;
+        flex-flow: column;
+    }
+
+    /* ----- produto ----- */
+    .product {
+        border-radius: 0;
+        border: none;
+        align-items: center;
+        width: 100%;
+        height: 100px;
+        margin: 1px auto;
+        padding: 0;
+    }
+
+    .imageProduct {
+        width: 25%;
+        height: 100px;
+        border-radius: 0;
+    }
+
+    .descriptionProduct {
+        width: 50%;
+        height: auto;
+        color: #000;
+        font-weight: 600;
+    }
+
+    .priceProduct {
+        width: 25%;
+        height: auto;
+        color: #777;
     }
     
     /* ----- Modal ----- */
@@ -406,15 +455,26 @@ footer{
         width: 80%;
         height: auto;
     }
+   
+    .pedir{
+        top: 89%;
+        width: inherit;
+        position: absolute;
+        }
 
 }
 
 @media screen and (min-width: 601px) and (max-width: 768px){
 
-    /* ----- Mesa.php ----- */
+    /* ----- Mesa ----- */
     .table {
         width: 150px;
         height: 150px;
+    }
+
+    /* ----- Produto ----- */
+    .product {
+        width: 100%;
     }
     
     /* ----- Modal ----- */
