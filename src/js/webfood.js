@@ -31,3 +31,5 @@ let lessProduct = () => {
 let moreProduct = () => {
     $('#inAmount').value++;
 }
+
+// ---> Meu Pedido 
