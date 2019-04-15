@@ -15,5 +15,7 @@ if(session_status() !== PHP_SESSION_ACTIVE){
 
 echo '<br><br><br>';
 echo '<a href="../mesa/logout.php"> Logout </a>';
+echo '<br><br><br>';
+echo '<a href="../pedido/index.php"> Meu Pedido </a>';
 
 ?>

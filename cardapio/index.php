@@ -67,8 +67,8 @@
                     <a href="#" class="modal__close">&times;</a>
 
                     <input type="hidden" name="txtIdProduct" id="inIdProduct" value="">
-                    <h2 id="inDescriptionProduct"></h2>
-                    <p id="inPriceProduct"></p>
+                    <h2 name="txtDescriptionProduct" id="inDescriptionProduct"></h2>
+                    <p name="txtPriceProduct" id="inPriceProduct"></p>
                     <div>
                         <input type="button" class="btnLessMore" id="btnLess" value="-" >
                         <input type="text" name="txtAmount" id="inAmount" value="1">
