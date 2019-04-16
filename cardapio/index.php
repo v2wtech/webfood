@@ -28,8 +28,23 @@
 <body>
     <div class="wrapper">
         <header id="header">
-            <h2>Cardápio | <a href="pedido.php">Pedido</a></h2> 
+            <input id="menu-hamburguer" type="checkbox">
+
+            <label for="menu-hamburguer">
+                <div class="menu">
+                    <span class="hamburguer"></span>
+                </div>
+            </label>
+
+            <h2>Cardápio</h2>
         </header>
+
+        <div id="side-menu" class="side-nav">
+            <a href="../cardapio/index.php">Cardápio</a>
+            <a href="../pedido/index.php">Meu Pedido</a>
+            <a href="../conta/index.php">Conta</a>
+            <a href="../mesa/logout.php">Sair</a>
+        </div>
 
         <main id="content">
             <div class="categories">
@@ -82,7 +97,8 @@
     <script src="../src/js/webfood.js"></script>
     <script>
         window.onload = () => {
-            
+            loadMenuOptions() 
+
             loadModalProducts()
 
             loadProductsCategory()
