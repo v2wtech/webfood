@@ -3,6 +3,19 @@ const $ = function(selector){
         document.querySelectorAll(selector):document.querySelectorAll(selector)[0]
 }.bind(document)
 
+
+
+// ---> Menu
+
+let loadMenuOptions = () => {
+    $('#menu-hamburguer').addEventListener('click', function(){
+        if($('#menu-hamburguer').checked == true)
+            $('.side-nav').style.width = '300px';
+        else
+            $('.side-nav').style.width = '0';
+    })
+}
+
 // ---> Mesa
 let loadFuncTables = () => {    
     $('.table').forEach(table => table.onclick = () => {
@@ -33,3 +46,24 @@ let moreProduct = () => {
 }
 
 // ---> Meu Pedido 
+let loadAddNFunctions = () => {
+    $('.btnLess').forEach(btnLess => btnLess.onclick = (el) => {
+        if(el.target.nextElementSibling.innerHTML > 1)
+            el.target.nextElementSibling.innerHTML--
+    })
+    
+    $('.btnMore').forEach(btnMore => btnMore.onclick = (em) => {
+        em.target.previousElementSibling.innerHTML++
+    })
+}
+
+let loadAddFunctions = () => {
+    $('.btnLess').onclick = (el) => {
+        if(el.target.nextElementSibling.innerHTML > 1)
+            el.target.nextElementSibling.innerHTML--
+    }
+    
+    $('.btnMore').onclick = (em) => {
+        em.target.previousElementSibling.innerHTML++
+    }
+}

@@ -20,7 +20,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <title>Webfood - Mesas</title>
+    <title>Webfood - Meu Pedido</title>
 
     <!-- styles  -->
     <link rel="stylesheet" href="../src/css/webfood.css">
@@ -67,40 +67,64 @@
 
 <body>
     <div class="wrapper">
+
         <header id="header">
+            <input id="menu-hamburguer" type="checkbox">
+
+            <label for="menu-hamburguer">
+                <div class="menu">
+                    <span class="hamburguer"></span>
+                </div>
+            </label>
+
             <h2>Meu Pedido</h2>
         </header>
 
+        <div id="side-menu" class="side-nav">
+            <a href="../cardapio/index.php">Cardápio</a>
+            <a href="../pedido/index.php">Meu Pedido</a>
+            <a href="../conta/index.php">Conta</a>
+            <a href="../mesa/logout.php">Sair</a>
+        </div>
+
         <main id="content">
             <form action="" method="POST">
-                <div class="order">
+                <div class="order-row order-column">
                     <?php
-                    $i = 0;
-                    foreach ($_SESSION['quantidadeProduto'] as $qtde) {
-                            $id = $_SESSION['idProduto'][$i];
+                        $total = 0;
+                        foreach ($_SESSION['idProduto'] as $id) {
+                            $qtde = $_SESSION['quantidadeProduto'][$id];
 
                             $product = $conn->prepare("SELECT descricao, preco FROM produto WHERE idProduto = $id");
                             
                             $item = $product->fetch($product->execute() > 0);
 
+                            $total += $item['preco'] * $qtde;
                         
-                            echo '<div class="order_items">';
-                            echo   '<span class="textOrderItems descriptionOrderItems">' . $item['descricao'] . '</span>';
-                            echo   '<span class="textOrderItems priceOrderItems">R$' . $item['preco'] . '</span>';
+                            if($id != 0){
 
-                            echo   '<div class="amountOrderItems">';
-                            echo        '<input type="button" class="btnLessMore btnLess" value="-" >';
-                            echo        '<span name="txtAmountOrderItems" class="txtAmountOrderItems">' . $qtde . '</span>';
-                            echo        '<input type="button" class="btnLessMore btnMore" value="+" >';
-                            echo   '</div>';
-                                
-                            echo   '<a href="" class="textOrderItems cancelOrderItems">&times;</a>';
-                            echo '</div>';
+                                echo '<div class="order_items">';
+                                echo   '<span class="textOrderItems descriptionOrderItems">' . $item['descricao'] . '</span>';
+                                echo   '<span class="textOrderItems priceOrderItems">R$ ' . $item['preco'] . '</span>';
 
-                            $i++;
-                    }
+                                echo   '<div class="amountOrderItems">';
+                                echo        '<input type="button" class="btnLessMore btnLess" value="-" >';
+                                echo        '<span name="txtAmountOrderItems" class="txtAmountOrderItems">' . $qtde . '</span>';
+                                echo        '<input type="button" class="btnLessMore btnMore" value="+" >';
+                                echo   '</div>';
+                                    
+                                echo   '<a href="" class="textOrderItems cancelOrderItems">&times;</a>';
+                                echo '</div>';
+                            }
+
+                        }
                         
                     ?>
+                    
+                    <div class="order_items">
+                        <span class="textOrderItems descriptionOrderItems"> Valor Total</span>
+                        <span class="textOrderItems priceOrderItems" id="valorTotal">R$ <?php echo $total?></span>   
+                    </div>
 
                 </div>
 
@@ -115,14 +139,18 @@
     <script src="../src/js/webfood.js"></script>
     <script>
         window.onload = () => {
-            $('.btnLess').forEach(btnLess => btnLess.onclick = (el) => {
-                if(el.target.nextElementSibling.innerHTML > 1)
-                el.target.nextElementSibling.innerHTML--
-            })
+
+            loadMenuOptions()
+
+            if($('.order_items') != null && $('.btnLess') != null){
+                if($('.btnLess').length > 0)
+                    loadAddNFunctions()
+                else
+                    loadAddFunctions()
             
-            $('.btnMore').forEach(btnMore => btnMore.onclick = (em) => {
-                em.target.previousElementSibling.innerHTML++
-            })
+                if($('.order_items').length > 4)
+                    $('.order-row').classList.remove('order-column')
+            }
         }
     </script>
 </body>
