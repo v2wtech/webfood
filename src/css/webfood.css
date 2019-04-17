@@ -295,6 +295,7 @@ html, body {
     .priceOrderItems:last-child {
         width: 55%;
         margin-right: 5%;
+        font-weight: bold;
     }
 
     .amountOrderItems {
@@ -579,8 +580,8 @@ html, body {
     .product {
         width: 100%;
     }
-    
 
+    
 
     /* ----- Modal ----- */
     .modal__content{
