@@ -61,9 +61,23 @@ let loadAddFunctions = () => {
     $('.btnLess').onclick = (el) => {
         if(el.target.nextElementSibling.innerHTML > 1)
             el.target.nextElementSibling.innerHTML--
+
     }
     
     $('.btnMore').onclick = (em) => {
-        em.target.previousElementSibling.innerHTML++
+        em.target.previousElementSibling.innerHTML++   
     }
 }
+
+let loadValorTotal = () => {
+    // var total = 0;
+    // for(var i=0;i<$('.priceOrderItems').length;i++){
+    //     var preco = parseFloat($('.priceOrderItems')[i].innerHTML.replace('R$ ', ''))
+    //     var quantidade = parseInt($('.txtAmountOrderItems')[i].innerHTML)
+    //     total += preco*quantidade
+    //     $('#valorTotal').innerHTML = 'R$ ' + total
+    //     console.log(preco + ' x ' + quantidade + ' = ' + total)
+    // }
+}
+
+

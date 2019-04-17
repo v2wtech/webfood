@@ -93,30 +93,27 @@
                     <?php
                         $total = 0;
                         foreach ($_SESSION['idProduto'] as $id) {
-                            $qtde = $_SESSION['quantidadeProduto'][$id];
+                            $amount = $_SESSION['quantidadeProduto'][$id];
 
                             $product = $conn->prepare("SELECT descricao, preco FROM produto WHERE idProduto = $id");
                             
                             $item = $product->fetch($product->execute() > 0);
 
-                            $total += $item['preco'] * $qtde;
+                            $total += $item['preco'] * $amount;
                         
-                            if($id != 0){
+                            echo '<div class="order_items" id="'. $id .'">';
+                            echo   '<span class="textOrderItems descriptionOrderItems">' . $item['descricao'] . '</span>';
+                            echo   '<span class="textOrderItems priceOrderItems">R$ ' . $item['preco'] . '</span>';
 
-                                echo '<div class="order_items">';
-                                echo   '<span class="textOrderItems descriptionOrderItems">' . $item['descricao'] . '</span>';
-                                echo   '<span class="textOrderItems priceOrderItems">R$ ' . $item['preco'] . '</span>';
-
-                                echo   '<div class="amountOrderItems">';
-                                echo        '<input type="button" class="btnLessMore btnLess" value="-" >';
-                                echo        '<span name="txtAmountOrderItems" class="txtAmountOrderItems">' . $qtde . '</span>';
-                                echo        '<input type="button" class="btnLessMore btnMore" value="+" >';
-                                echo   '</div>';
-                                    
-                                echo   '<a href="" class="textOrderItems cancelOrderItems">&times;</a>';
-                                echo '</div>';
-                            }
-
+                            echo   '<div class="amountOrderItems">';
+                            echo        '<input type="button" class="btnLessMore btnLess" value="-" >';
+                            echo        '<span name="txtAmountOrderItems" class="txtAmountOrderItems">' . $amount . '</span>';
+                            echo        '<input type="button" class="btnLessMore btnMore" value="+" >';
+                            echo   '</div>';
+                                
+                            echo   '<a href="" class="textOrderItems cancelOrderItems">&times;</a>';
+                            echo '</div>';
+                            
                         }
                         
                     ?>
@@ -141,6 +138,8 @@
         window.onload = () => {
 
             loadMenuOptions()
+
+            loadValorTotal()
 
             if($('.order_items') != null && $('.btnLess') != null){
                 if($('.btnLess').length > 0)
