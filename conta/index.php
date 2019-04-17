@@ -5,10 +5,8 @@
         if(!isset($_SESSION['mesa']))
             header('Location: ../mesa/index.php');
     }
-
     include '../database/database.php';
     $conn = new PDO("mysql:host=$server;dbname=$database;", $user, $password);
-
 ?>
 
 
@@ -36,7 +34,7 @@
             outline: none;
             border-radius: 100px;
         }
-
+       
         input[type="submit"] {
             margin: 5px auto;
             width: 200px;
@@ -47,7 +45,7 @@
             color: #fff;
             font-weight: bold;
         }
-
+       
         input[type="submit"]:hover {
             cursor: pointer;
             background: #1a5b9c;
@@ -58,36 +56,35 @@
             left:45%;
             position:relative;
         }
-
+        
         .valor_total {
-        display: flex;
-        font-size: 12pt;
-        height: auto;
-        align-items: center;
-        margin-bottom: 4%;
-    }
-
-    .valor {
-    margin-left: 8%;
-    width: 45%;
-    font-weight: 500;
-    margin-bottom: 4%;
-    }
-
-    .valorFix {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-flow: row;
-    align-items: center;
-    width: 100%;
-    height: 100px;
-    border-top: 1px solid #999;
-    background-color:#d83333fc;
-}
-
-
-    </style>
+            display: flex;
+            font-size: 12pt;
+            height: auto;
+            align-items: center;
+            margin-bottom: 4%;
+        }
+    
+        .valor {
+            margin-left: 8%;
+            width: 45%;
+            font-weight: 500;
+            margin-bottom: 4%;
+        }
+    
+        .valorFix {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-flow: row;
+            align-items: center;
+            width: 100%;
+            height: 100px;
+            border-top: 1px solid #999;
+            background-color:#d83333fc;
+        }
+   
+   </style>
 </head>
 
 <body>
@@ -121,26 +118,26 @@
                         $total = 0;
                         foreach ($_SESSION['idProduto'] as $id) {
                             $qtde = $_SESSION['quantidadeProduto'][$id];
-
+                            
                             $product = $conn->prepare("SELECT descricao, preco FROM produto WHERE idProduto = $id");
                             
                             $item = $product->fetch($product->execute() > 0);
-
+                          
                             $total += $item['preco'] * $qtde;
                         
                             if($id != 0){
-
+                               
                                 echo '<div class="order_items">';
                                 echo   '<span class="textOrderItems descriptionOrderItems">' . $item['descricao'] . '</span>';
                                 echo   '<span class="textOrderItems priceOrderItems"> preço  R$ ' . $item['preco'] . '</span>';
-
+                               
                                 echo   '<div class="amountOrderItems">';
                                 echo        '<span name="txtAmountOrderItems" class="txtAmountOrderItems"> qtd  ' . $qtde . '</span>';
                                 echo   '</div>';
                                     
                                 echo '</div>';
                             }
-
+                       
                         }
                         
                     ?>
