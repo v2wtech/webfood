@@ -57,9 +57,96 @@ html, body {
     background: #fefefe;
 }
 
+/* Menu*/
+.menu {
+    background: transparent;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    position: fixed;
+    top: 2px;
+    left: 10px;
+    z-index: 2;
+}
+
+.hamburguer {
+    position: relative;
+    display: block;
+    background: #fff;
+    width: 30px;
+    height: 3px;
+    top: 29px;
+    left: 15px;
+    transition: .5s ease-in-out;
+}
+
+.hamburguer:before,
+.hamburguer:after {
+    background: #fff;
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transition: .5s ease-in-out;
+}
+
+.hamburguer:before {
+    top: -10px;
+}
+
+.hamburguer:after {
+    bottom: -10px;
+}
+
+#menu-hamburguer {
+    display: none;
+}
+
+#menu-hamburguer:checked ~ label .hamburguer {
+    transform: rotate(45deg);
+}
+
+#menu-hamburguer:checked ~ label .hamburguer:before {
+    transform: rotate(90deg);
+    top: 0;
+}
+
+#menu-hamburguer:checked ~ label .hamburguer:after {
+    transform: rotate(90deg);
+    bottom: 0;
+}
+
+.side-nav{
+    width: 0px;
+    height:100vh;
+    position:fixed;
+    z-index:1;
+    top:0;
+    left:0;
+    background-color:#111;
+    opacity:0.9;
+    overflow-x:hidden;
+    padding-top:60px;
+    transition:0.5s;
+}
+
+.side-nav a{
+    padding:10px 10px 10px 30px;
+    text-decoration:none;
+    font-size:22px;
+    color:#ccc;
+    display:block;
+    transition:0.3s;
+}
+
+.side-nav a:hover{
+    color:#fff; 
+}
+
+
 
  /* ----- mesa / cardapio ----- */
-
 .tables, .categories, .products-open {
     display: flex;
     justify-content: center;
@@ -70,8 +157,9 @@ html, body {
     display: none;
 }
 
-/* ----- mesa ----- */
 
+
+/* ----- mesa ----- */
 .table {
     display: flex;
     justify-content: center;
@@ -87,15 +175,15 @@ html, body {
     cursor: pointer;
 }
 
-/* ----- categoria ----- */
 
+
+/* ----- categoria ----- */
 .category {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: 18vh;
-    /* background: #3381b4; */
     color: #000;
     font-size: 18pt;
     font-weight: bold;
@@ -113,6 +201,8 @@ html, body {
     width: 100%;
     background: transparent;
 }
+
+
 
 /* ----- produto ----- */
 .product {
@@ -151,8 +241,99 @@ html, body {
     color: #777;
 }
 
-/* ----- Modal ----- */
 
+
+/* ----- Meu Pedido ----- */
+.order-row {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    /* height: 80vh; */
+    display: flex;
+    flex-flow: row wrap;
+    position: fixed;
+    overflow-y: auto;
+    float: left;
+}
+
+.order-column {
+    flex-flow: column wrap;
+}
+
+.order_items {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    width: 100%;
+    height: 100px;
+    border-top: 1px solid #999;
+}
+
+.order_items:first-child {
+    border-top: none;
+}
+
+    .textOrderItems {
+        display: flex;
+        font-size: 12pt;
+        height: auto;
+        align-items: center;
+    }
+
+    .descriptionOrderItems {
+        margin-left: 5%;
+        width: 40%;
+        font-weight: 500;
+    }
+
+    .priceOrderItems {
+        width: 25%;
+    }
+
+    .priceOrderItems:last-child {
+        width: 55%;
+        margin-right: 5%;
+    }
+
+    .amountOrderItems {
+        width: 20%;
+        font-weight: 600;
+    }
+
+        .txtAmountOrderItems {
+            width:  60px;
+            height: 40px;
+            color: #308a1e;
+            text-align: center;
+            border: none;
+            font-size: 16pt;
+            margin: 10px;
+        }
+
+    .cancelOrderItems {
+        justify-content:  flex-end;
+        margin-right: 5%;
+        width: 10%;
+        font-weight: bold;
+        font-size: 20pt;
+        color: red;
+    }
+
+#footer {
+    width: 100%;
+    height: 10vh;
+    border: none;
+    display: flex;
+    bottom: 0;
+    float: left;
+    position: fixed;
+}
+
+
+
+/* ----- Modal ----- */
 .modal{
     display: flex;
     justify-content: center;
@@ -263,9 +444,12 @@ html, body {
     border: 1px solid #ccc;
     color: #ccc;
     outline: none;
+    border-radius: 100px;
 }
 
-/* ----- modal cardapio ----- */
+
+
+/* ----- Modal Cardápio ----- */
 .modal__content > div {
     width: 250px;
     height: auto;
@@ -316,95 +500,6 @@ html, body {
     background: #e28a18;    
 }
 
-/* --------------pedido---------------- */
-footer{
-    width: 100%;
-    height: 12%;
-    background: #d83333fc;
-    display: flex;
-    position: absolute;
-}
-
-.pedir{
-top: 92%;
-width: inherit;
-position: absolute;
-}
-
-.valor_pedido{
-    display: flex;
-    float: left;
-    font-size: 1em;
-    border: none;
-    margin: 15px;
-}
-
-.total_pedido{
-    display: flex;
-    float: right;
-    font-size: 1em;
-    border: none;
-    margin: 15px;
-}
-
-.item_pedido{
-    margin-top: 2%;
-    width: 100%;
-    display: flex;
-    border: 1px;
-    border-style: solid;
-    border-color: gray;
-}
-.item_pedido h3{
-    position: relative;
-    display: flex;
-}
-
-.description{ 
-    margin-left: 2%;
-}
-
-.price{
-    margin-top: 25px;
-    margin-left: 2%;
-    position: absolute; 
-    margin-right: 3%;
-}
-.x{
-    margin-top: 25px;
-    margin-right: 3%;
-}
-
-.qntd{
-    margin-top: 25px;
-}
-#btnEnviar{
-    width: 142px;
-    height: 67%;
-    font-size: 1em;
-    border: none;
-    background: #1e72c5;
-    color: #fff;
-    font-weight: bold;
-    position: absolute;
-    margin-top: 1%;
-    left: 40%;
-    cursor: pointer;
-     
-}
-#btnExcluir{
-    width: 70px;
-    height: 40px;
-    display: flex;
-    background: transparent;
-    font-weight: bold;
-    cursor: pointer;
-    border: 1px solid #ccc;
-    color: #ccc;
-    margin: 15px;
-    margin-left: auto;
-    
-}
 
 @media screen and (max-width: 600px){
 
@@ -414,11 +509,15 @@ position: absolute;
         height: 150px;
     }
 
+
+
     /* ----- cardapio ----- */
     .products-open {
         max-width: 100%;
         flex-flow: column;
     }
+
+
 
     /* ----- produto ----- */
     .product {
@@ -450,6 +549,8 @@ position: absolute;
         color: #777;
     }
     
+
+
     /* ----- Modal ----- */
     .modal__content{
         width: 80%;
@@ -460,7 +561,7 @@ position: absolute;
         top: 89%;
         width: inherit;
         position: absolute;
-        }
+    }
 
 }
 
@@ -472,11 +573,15 @@ position: absolute;
         height: 150px;
     }
 
+
+
     /* ----- Produto ----- */
     .product {
         width: 100%;
     }
     
+
+
     /* ----- Modal ----- */
     .modal__content{
         width: 50%;

@@ -20,7 +20,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <title>Webfood - Meu Pedido</title>
+    <title>Webfood - Minha Conta</title>
 
     <!-- styles  -->
     <link rel="stylesheet" href="../src/css/webfood.css">
@@ -53,15 +53,40 @@
             background: #1a5b9c;
         }
         
-        .btnMore:hover {
-            color: #308a1e;
-            border-color: #308a1e
+
+        .consumido{
+            left:45%;
+            position:relative;
         }
 
-        .btnLess:hover {
-            color: #d83333fc;
-            border-color: #d83333fc;
-        }
+        .valor_total {
+        display: flex;
+        font-size: 12pt;
+        height: auto;
+        align-items: center;
+        margin-bottom: 4%;
+    }
+
+    .valor {
+    margin-left: 8%;
+    width: 45%;
+    font-weight: 500;
+    margin-bottom: 4%;
+    }
+
+    .valorFix {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    width: 100%;
+    height: 100px;
+    border-top: 1px solid #999;
+    background-color:#d83333fc;
+}
+
+
     </style>
 </head>
 
@@ -77,7 +102,7 @@
                 </div>
             </label>
 
-            <h2>Meu Pedido</h2>
+            <h2>Minha Conta</h2>
         </header>
 
         <div id="side-menu" class="side-nav">
@@ -86,10 +111,12 @@
             <a href="../conta/index.php">Conta</a>
             <a href="../mesa/logout.php">Sair</a>
         </div>
-
-        <main id="content">
+        
+        <main id="content">    
             <form action="" method="POST">
-                <div class="order-row order-column">
+                
+                <div class="order-row">
+                <h1 class="consumido"><strong>Consumido</strong></h1>
                     <?php
                         $total = 0;
                         foreach ($_SESSION['idProduto'] as $id) {
@@ -105,15 +132,12 @@
 
                                 echo '<div class="order_items">';
                                 echo   '<span class="textOrderItems descriptionOrderItems">' . $item['descricao'] . '</span>';
-                                echo   '<span class="textOrderItems priceOrderItems">R$ ' . $item['preco'] . '</span>';
+                                echo   '<span class="textOrderItems priceOrderItems"> preço  R$ ' . $item['preco'] . '</span>';
 
                                 echo   '<div class="amountOrderItems">';
-                                echo        '<input type="button" class="btnLessMore btnLess" value="-" >';
-                                echo        '<span name="txtAmountOrderItems" class="txtAmountOrderItems">' . $qtde . '</span>';
-                                echo        '<input type="button" class="btnLessMore btnMore" value="+" >';
+                                echo        '<span name="txtAmountOrderItems" class="txtAmountOrderItems"> qtd  ' . $qtde . '</span>';
                                 echo   '</div>';
                                     
-                                echo   '<a href="" class="textOrderItems cancelOrderItems">&times;</a>';
                                 echo '</div>';
                             }
 
@@ -121,15 +145,14 @@
                         
                     ?>
                     
-                    <div class="order_items">
-                        <span class="textOrderItems descriptionOrderItems"> Valor Total</span>
-                        <span class="textOrderItems priceOrderItems" id="valorTotal">R$ <?php echo $total?></span>   
-                    </div>
 
                 </div>
 
                 <div id="footer">
-                    <input type="submit" id="btnEnviar" name="btnConfirmar" value="Confirmar">
+                <div class="valorFix">
+                        <span class="valor"> Valor Total</span>
+                        <span class="valor_total" id="valorTotal">R$ <?php echo $total?></span>   
+                    </div>
                 </div>
             </form>
         </main>
