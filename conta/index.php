@@ -5,10 +5,8 @@
         if(!isset($_SESSION['mesa']))
             header('Location: ../mesa/index.php');
     }
-
     include '../database/database.php';
     $conn = new PDO("mysql:host=$server;dbname=$database;", $user, $password);
-
 ?>
 
 
@@ -20,7 +18,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <title>Webfood - Meu Pedido</title>
+    <title>Webfood - Minha Conta</title>
 
     <!-- styles  -->
     <link rel="stylesheet" href="../src/css/webfood.css">
@@ -36,7 +34,7 @@
             outline: none;
             border-radius: 100px;
         }
-
+       
         input[type="submit"] {
             margin: 5px auto;
             width: 200px;
@@ -47,22 +45,46 @@
             color: #fff;
             font-weight: bold;
         }
-
+       
         input[type="submit"]:hover {
             cursor: pointer;
             background: #1a5b9c;
         }
         
-        .btnMore:hover {
-            color: #308a1e;
-            border-color: #308a1e
-        }
 
-        .btnLess:hover {
-            color: #d83333fc;
-            border-color: #d83333fc;
+        .consumido{
+            left:45%;
+            position:relative;
         }
-    </style>
+        
+        .valor_total {
+            display: flex;
+            font-size: 12pt;
+            height: auto;
+            align-items: center;
+            margin-bottom: 4%;
+        }
+    
+        .valor {
+            margin-left: 8%;
+            width: 45%;
+            font-weight: 500;
+            margin-bottom: 4%;
+        }
+    
+        .valorFix {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-flow: row;
+            align-items: center;
+            width: 100%;
+            height: 100px;
+            border-top: 1px solid #999;
+            background-color:#d83333fc;
+        }
+   
+   </style>
 </head>
 
 <body>
@@ -77,7 +99,7 @@
                 </div>
             </label>
 
-            <h2>Meu Pedido</h2>
+            <h2>Minha Conta</h2>
         </header>
 
         <div id="side-menu" class="side-nav">
@@ -86,42 +108,48 @@
             <a href="../conta/index.php">Conta</a>
             <a href="../mesa/logout.php">Sair</a>
         </div>
-
-        <main id="content">
+        
+        <main id="content">    
             <form action="" method="POST">
-                <div class="order-row order-column">
+                
+                <div class="order-row">
+                <h1 class="consumido"><strong>Consumido</strong></h1>
                     <?php
                         $total = 0;
                         foreach ($_SESSION['idProduto'] as $id) {
-                            $amount = $_SESSION['quantidadeProduto'][$id];
-
+                            $qtde = $_SESSION['quantidadeProduto'][$id];
+                            
                             $product = $conn->prepare("SELECT descricao, preco FROM produto WHERE idProduto = $id");
                             
                             $item = $product->fetch($product->execute() > 0);
-
-                            $total += $item['preco'] * $amount;
+                          
+                            $total += $item['preco'] * $qtde;
                         
-                            echo '<div class="order_items" id="item-'. $id .'">';
-                            echo   '<input type="hidden" class="priceFix" value="' . $item['preco'] .'">';
-                            echo   '<p class="textOrderItems descriptionOrderItems"><span>' . $item['descricao'] . '</span></p>';
-                            echo   '<p class="textOrderItems priceOrderItems priceItem">R$ <span>' . $item['preco'] * $amount . '</span></p>';
-
-                            echo   '<div class="amountOrderItems">';
-                            echo        '<input type="button" class="btnLessMore btnLess" value="-" >';
-                            echo        '<span name="txtAmountOrderItems" class="txtAmountOrderItems">' . $amount . '</span>';
-                            echo        '<input type="button" class="btnLessMore btnMore" value="+" >';
-                            echo   '</div>';
-                                
-                            echo   '<a href="excluir.php?id='. $id .'" class="textOrderItems cancelOrderItems">&times;</a>';
-                            echo '</div>';
-                            
+                            if($id != 0){
+                               
+                                echo '<div class="order_items">';
+                                echo   '<span class="textOrderItems descriptionOrderItems">' . $item['descricao'] . '</span>';
+                                echo   '<span class="textOrderItems priceOrderItems"> preço  R$ ' . $item['preco'] . '</span>';
+                               
+                                echo   '<div class="amountOrderItems">';
+                                echo        '<span name="txtAmountOrderItems" class="txtAmountOrderItems"> qtd  ' . $qtde . '</span>';
+                                echo   '</div>';
+                                    
+                                echo '</div>';
+                            }
+                       
                         }
                         
                     ?>
+                    
+
                 </div>
 
                 <div id="footer">
-                    <input type="submit" id="btnEnviar" name="btnConfirmar" value="Confirmar">
+                <div class="valorFix">
+                        <span class="valor"> Valor Total</span>
+                        <span class="valor_total" id="valorTotal">R$ <?php echo $total?></span>   
+                    </div>
                 </div>
             </form>
         </main>
@@ -134,13 +162,15 @@
 
             loadMenuOptions()
 
-            loadOrderValue();
-
-            updatePriceAmount();
-
-            if($('.order_items') != null && $('.order_items').length > 4)        
-                $('.order-row').classList.remove('order-column')
-
+            if($('.order_items') != null && $('.btnLess') != null){
+                if($('.btnLess').length > 0)
+                    loadAddNFunctions()
+                else
+                    loadAddFunctions()
+            
+                if($('.order_items').length > 4)
+                    $('.order-row').classList.remove('order-column')
+            }
         }
     </script>
 </body>
