@@ -292,12 +292,6 @@ html, body {
         width: 25%;
     }
 
-    .priceOrderItems:last-child {
-        width: 55%;
-        margin-right: 5%;
-        font-weight: bold;
-    }
-
     .amountOrderItems {
         width: 20%;
         font-weight: 600;
