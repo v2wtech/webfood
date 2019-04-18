@@ -91,15 +91,12 @@
             <form action="" method="POST">
                 <div class="order-row order-column">
                     <?php
-                        $total = 0;
                         foreach ($_SESSION['idProduto'] as $id) {
                             $amount = $_SESSION['quantidadeProduto'][$id];
 
                             $product = $conn->prepare("SELECT descricao, preco FROM produto WHERE idProduto = $id");
                             
                             $item = $product->fetch($product->execute() > 0);
-
-                            $total += $item['preco'] * $amount;
                         
                             echo '<div class="order_items" id="item-'. $id .'">';
                             echo   '<input type="hidden" class="priceFix" value="' . $item['preco'] .'">';
