@@ -67,7 +67,7 @@ let loadOrderValue = () => {
 
 let updatePrice = (operator, id) => {
     let priceFix = document.querySelector(`#${id} .priceFix`).value;
-    let qtde = document.querySelector(`#${id} .amountOrderItems .txtAmountOrderItems`).innerHTML; 
+    let qtde = document.querySelector(`#${id} .amountOrderItems .txtAmountOrderItems`).value; 
 
     let price = eval(`${priceFix} ${operator} ${qtde} `);
 
@@ -95,10 +95,10 @@ let updatePriceAmountV2 = (elem, operation) => {
     for (let item of elem.childNodes) {
         item.onclick = () => {
             if(item.value == '+')
-                ++item.previousElementSibling.innerHTML
+                ++item.previousElementSibling.value
             else
-                if(item.nextElementSibling.innerHTML > 1)
-                    --item.nextElementSibling.innerHTML
+                if(item.nextElementSibling.value > 1)
+                    --item.nextElementSibling.value
 
             let id = item.parentNode.parentNode.id;
 
