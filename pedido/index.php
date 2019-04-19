@@ -88,27 +88,25 @@
         </div>
 
         <main id="content">
-            <form action="" method="POST">
+            <form action="incluir.php" method="POST">
                 <div class="order-row order-column">
                     <?php
-                        $total = 0;
                         foreach ($_SESSION['idProduto'] as $id) {
                             $amount = $_SESSION['quantidadeProduto'][$id];
 
                             $product = $conn->prepare("SELECT descricao, preco FROM produto WHERE idProduto = $id");
                             
                             $item = $product->fetch($product->execute() > 0);
-
-                            $total += $item['preco'] * $amount;
                         
                             echo '<div class="order_items" id="item-'. $id .'">';
+                            echo   '<input type="hidden" name="txtItemId[]" value="'. $id .'">';
                             echo   '<input type="hidden" class="priceFix" value="' . $item['preco'] .'">';
                             echo   '<p class="textOrderItems descriptionOrderItems"><span>' . $item['descricao'] . '</span></p>';
                             echo   '<p class="textOrderItems priceOrderItems priceItem">R$ <span>' . $item['preco'] * $amount . '</span></p>';
 
                             echo   '<div class="amountOrderItems">';
                             echo        '<input type="button" class="btnLessMore btnLess" value="-" >';
-                            echo        '<span name="txtAmountOrderItems" class="txtAmountOrderItems">' . $amount . '</span>';
+                            echo        '<input name="txtAmountOrderItems[]" class="txtAmountOrderItems" value="' . $amount . '">';
                             echo        '<input type="button" class="btnLessMore btnMore" value="+" >';
                             echo   '</div>';
                                 
