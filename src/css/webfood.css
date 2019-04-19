@@ -298,7 +298,7 @@ html, body {
     }
 
         .txtAmountOrderItems {
-            width:  60px;
+            width: 50px;
             height: 40px;
             color: #308a1e;
             text-align: center;
@@ -545,6 +545,39 @@ html, body {
     }
     
 
+
+    /* ----- Pedido ----- */
+    .textOrderItems {
+        flex-flow: row wrap;
+    }
+
+    .descriptionOrderItems {
+        flex-flow: row wrap;
+        margin-left: 5%;
+        width: 100%;
+        font-weight: 500;
+    }
+
+    .priceOrderItems {
+        flex-flow: row wrap;
+        margin-left: 5%;
+        width: 50%;
+        line-height: 1;
+    }
+
+    .amountOrderItems {
+        display: flex;
+        width: 40%;
+        font-weight: 600;
+        margin-right: 5%;
+        line-height: 1;
+        margin-top: 4%;
+    }
+
+    .cancelOrderItems {
+        width: 10%;
+        color: red;
+    }
 
     /* ----- Modal ----- */
     .modal__content{

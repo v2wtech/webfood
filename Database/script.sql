@@ -1,13 +1,6 @@
 CREATE DATABASE webfood;
 USE webfood;
 
-CREATE TABLE estabelecimento (
-id INT PRIMARY KEY AUTO_INCREMENT,
-usuario VARCHAR(30) NOT NULL UNIQUE,
-senha VARCHAR(32) NOT NULL,
-nome VARCHAR(60) NOT NULL
-);
-
 CREATE TABLE MESA (
 descricao VARCHAR(30),
 senha VARCHAR(32),
@@ -27,12 +20,13 @@ INSERT INTO mesa (descricao, senha, idMesa) VALUES ("Mesa 10","mesa10",10);
 INSERT INTO mesa (descricao, senha, idMesa) VALUES ("Mesa 11","mesa11",11);
 INSERT INTO mesa (descricao, senha, idMesa) VALUES ("Mesa 12","mesa12",12);
 
+
 CREATE TABLE PEDIDO (
 idPedido INT PRIMARY KEY AUTO_INCREMENT,
-dataPedido DATETIME,
 idMesa INT,
 FOREIGN KEY(idMesa) REFERENCES MESA (idMesa)
 );
+
 
 CREATE TABLE PRODUTO (
 idProduto INT PRIMARY KEY AUTO_INCREMENT,
@@ -86,13 +80,18 @@ INSERT INTO categoria VALUES(4, "Massas");
 INSERT INTO categoria VALUES(5, "Sobremesas");
 
 CREATE TABLE ITEM_PEDIDO (
-idProduto INT,
 idPedido INT,
-idItemPedido INT PRIMARY KEY AUTO_INCREMENT,
+idProduto INT,
 quantidade INT,
-valorTotal DECIMAL(12,2),
 FOREIGN KEY(idProduto) REFERENCES PRODUTO (idProduto),
 FOREIGN KEY(idPedido) REFERENCES PEDIDO (idPedido)
 );
 
 ALTER TABLE PRODUTO ADD FOREIGN KEY(idCategoria) REFERENCES CATEGORIA (idCategoria);
+
+
+
+SELECT * FROM mesa;
+SELECT * FROM produto ORDER BY idProduto;
+SELECT * FROM pedido ORDER BY idPedido;
+SELECT * FROM item_pedido;
