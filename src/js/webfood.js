@@ -62,7 +62,7 @@ let loadOrderValue = () => {
         else
             valor += parseFloat($('.priceItem span').innerHTML)
 
-    $('#btnEnviar').value = 'Confirmar (R$ ' + valor +')'
+    $('#btnEnviar').value = 'Confirmar (R$ ' + valor.toFixed(2) +')'
 }
 
 let updatePrice = (operator, id) => {
@@ -71,7 +71,7 @@ let updatePrice = (operator, id) => {
 
     let price = eval(`${priceFix} ${operator} ${qtde} `);
 
-    document.querySelector(`#${id} .priceOrderItems span`).innerHTML = price;
+    document.querySelector(`#${id} .priceOrderItems span`).innerHTML = price.toFixed(2);
 }
 
 let updatePriceAmount = () => {
@@ -108,4 +108,17 @@ let updatePriceAmountV2 = (elem, operation) => {
             loadOrderValue()
         }
     }
+}
+
+
+
+// ---> Conta
+
+let loadTotalValue = () => {
+    var totalValue = 0
+    $('.txtPriceProduct').forEach(elem => {
+	    totalValue += parseFloat(elem.innerHTML);
+    })
+
+    $('.txtTotalValue span').innerHTML = totalValue.toFixed(2);
 }
