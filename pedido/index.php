@@ -97,7 +97,7 @@
                             $product = $conn->prepare("SELECT descricao, preco FROM produto WHERE idProduto = $id");
                             
                             $item = $product->fetch($product->execute() > 0);
-                        
+
                             echo '<div class="order_items" id="item-'. $id .'">';
                             echo   '<input type="hidden" name="txtItemId[]" value="'. $id .'">';
                             echo   '<input type="hidden" class="priceFix" value="' . $item['preco'] .'">';
