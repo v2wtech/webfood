@@ -48,7 +48,16 @@ let moreProduct = () => {
     $('#inAmount').value++;
 }
 
+let loadImagesCardapio = () => {
+    img = ['pizza.jpg', 'hamburguer.png', 'bebidas.jpg', 'massas.jpg', 'sobremesas.jpg']
 
+    var i=0
+
+    while(i != $('.category').length){
+        $('.category')[i].style.backgroundImage = "url('../src/assets/cardapio/"+ img[i] + "')"
+        i++
+    }
+}
 
 // ---> Meu Pedido 
 let loadOrderValue = () => {
