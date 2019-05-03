@@ -19,11 +19,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+    <link rel="shortcut icon" type="image/x-icon" href="../src/assets/icons/webfood.ico" />
+
     <title>Webfood - Cardápio</title>
 
     <!-- styles  -->
     <link rel="stylesheet" href="../src/css/webfood.css">
+    
+    <style>
+        .category {
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: 50% 50%;
+            color: #fff;
+            filter: grayscale(75%);
+            transition: .2s all;    
+            text-shadow: 1px 1px 3px #000; 
+        }
 
+        .category:hover{
+            filter: grayscale(5%);
+        }
+    
+    </style>
 </head>
 <body>
     <div class="wrapper">
@@ -103,6 +121,8 @@
 
             loadProductsCategory()
 
+            loadImagesCardapio();
+
             $('#btnLess').addEventListener('click', function(){
                 lessProduct();
             });
@@ -110,6 +130,14 @@
             $('#btnMore').addEventListener('click', function(){
                 moreProduct();
             });
+
+
+            
+
+            
+
+            
+
         }
     </script>
 </body>

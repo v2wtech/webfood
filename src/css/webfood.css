@@ -248,7 +248,7 @@ html, body {
     margin: 0;
     padding: 0;
     width: 100%;
-    /* height: 80vh; */
+    height: 80vh;
     display: flex;
     flex-flow: row wrap;
     position: fixed;
@@ -292,18 +292,13 @@ html, body {
         width: 25%;
     }
 
-    .priceOrderItems:last-child {
-        width: 55%;
-        margin-right: 5%;
-    }
-
     .amountOrderItems {
         width: 20%;
         font-weight: 600;
     }
 
         .txtAmountOrderItems {
-            width:  60px;
+            width: 50px;
             height: 40px;
             color: #308a1e;
             text-align: center;
@@ -551,6 +546,39 @@ html, body {
     
 
 
+    /* ----- Pedido ----- */
+    .textOrderItems {
+        flex-flow: row wrap;
+    }
+
+    .descriptionOrderItems {
+        flex-flow: row wrap;
+        margin-left: 5%;
+        width: 100%;
+        font-weight: 500;
+    }
+
+    .priceOrderItems {
+        flex-flow: row wrap;
+        margin-left: 5%;
+        width: 50%;
+        line-height: 1;
+    }
+
+    .amountOrderItems {
+        display: flex;
+        width: 40%;
+        font-weight: 600;
+        margin-right: 5%;
+        line-height: 1;
+        margin-top: 4%;
+    }
+
+    .cancelOrderItems {
+        width: 10%;
+        color: red;
+    }
+
     /* ----- Modal ----- */
     .modal__content{
         width: 80%;
@@ -579,8 +607,8 @@ html, body {
     .product {
         width: 100%;
     }
-    
 
+    
 
     /* ----- Modal ----- */
     .modal__content{

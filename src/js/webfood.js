@@ -6,7 +6,6 @@ const $ = function(selector){
 
 
 // ---> Menu
-
 let loadMenuOptions = () => {
     $('#menu-hamburguer').addEventListener('click', function(){
         if($('#menu-hamburguer').checked == true)
@@ -16,12 +15,16 @@ let loadMenuOptions = () => {
     })
 }
 
+
+
 // ---> Mesa
 let loadFuncTables = () => {    
     $('.table').forEach(table => table.onclick = () => {
         $('#inTable').value = table.innerHTML
     })
 }
+
+
 
 // ---> Cardápio
 let loadProductsCategory = () => {
@@ -45,25 +48,86 @@ let moreProduct = () => {
     $('#inAmount').value++;
 }
 
-// ---> Meu Pedido 
-let loadAddNFunctions = () => {
-    $('.btnLess').forEach(btnLess => btnLess.onclick = (el) => {
-        if(el.target.nextElementSibling.innerHTML > 1)
-            el.target.nextElementSibling.innerHTML--
-    })
-    
-    $('.btnMore').forEach(btnMore => btnMore.onclick = (em) => {
-        em.target.previousElementSibling.innerHTML++
-    })
+let loadImagesCardapio = () => {
+    img = ['pizza.jpg', 'hamburguer.png', 'bebidas.jpg', 'massas.jpg', 'sobremesas.jpg']
+
+    var i=0
+
+    while(i != $('.category').length){
+        $('.category')[i].style.backgroundImage = "url('../src/assets/cardapio/"+ img[i] + "')"
+        i++
+    }
 }
 
-let loadAddFunctions = () => {
-    $('.btnLess').onclick = (el) => {
-        if(el.target.nextElementSibling.innerHTML > 1)
-            el.target.nextElementSibling.innerHTML--
+// ---> Meu Pedido 
+let loadOrderValue = () => {
+    let valor = 0
+
+    if($('.priceItem span') != null)
+        if($('.priceItem span').length > 1)
+            $('.priceItem span').forEach(elem => {
+                valor += parseFloat(elem.innerHTML)
+            })
+        else
+            valor += parseFloat($('.priceItem span').innerHTML)
+
+    $('#btnEnviar').value = 'Confirmar (R$ ' + valor.toFixed(2) +')'
+}
+
+let updatePrice = (operator, id) => {
+    let priceFix = document.querySelector(`#${id} .priceFix`).value;
+    let qtde = document.querySelector(`#${id} .amountOrderItems .txtAmountOrderItems`).value; 
+
+    let price = eval(`${priceFix} ${operator} ${qtde} `);
+
+    document.querySelector(`#${id} .priceOrderItems span`).innerHTML = price.toFixed(2);
+}
+
+let updatePriceAmount = () => {
+    let operation = {
+        '+': id => updatePrice('*', id),
+        '-': id => updatePrice('*', id)
     }
-    
-    $('.btnMore').onclick = (em) => {
-        em.target.previousElementSibling.innerHTML++
+
+    if($('.order_items div') != null)
+        if($('.order_items div').length > 1)
+            $('.order_items div').forEach(elem => {
+                updatePriceAmountV2(elem, operation)
+            });
+        else {
+            var elem = $('.order_items div')
+            updatePriceAmountV2(elem, operation)
+        }
+}
+
+let updatePriceAmountV2 = (elem, operation) => {
+    for (let item of elem.childNodes) {
+        item.onclick = () => {
+            if(item.value == '+')
+                ++item.previousElementSibling.value
+            else
+                if(item.nextElementSibling.value > 1)
+                    --item.nextElementSibling.value
+
+            let id = item.parentNode.parentNode.id;
+
+            if(item.value != undefined)
+                operation[item.value](id);
+
+            loadOrderValue()
+        }
     }
+}
+
+
+
+// ---> Conta
+
+let loadTotalValue = () => {
+    var totalValue = 0
+    $('.txtPriceProduct').forEach(elem => {
+	    totalValue += parseFloat(elem.innerHTML);
+    })
+
+    $('.txtTotalValue span').innerHTML = totalValue.toFixed(2);
 }

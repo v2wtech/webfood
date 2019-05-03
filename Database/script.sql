@@ -8,6 +8,11 @@ senha VARCHAR(32) NOT NULL,
 nome VARCHAR(60) NOT NULL
 );
 
+INSERT INTO estabelecimento (id, usuario, senha, nome)
+VALUES(1, "juniorpires", "1234", "Junior Pires");
+INSERT INTO estabelecimento (id, usuario, senha, nome) 
+VALUES (2, "juniorsilva", "1234", "Junior Silva");
+
 CREATE TABLE MESA (
 descricao VARCHAR(30),
 senha VARCHAR(32),
@@ -27,12 +32,13 @@ INSERT INTO mesa (descricao, senha, idMesa) VALUES ("Mesa 10","mesa10",10);
 INSERT INTO mesa (descricao, senha, idMesa) VALUES ("Mesa 11","mesa11",11);
 INSERT INTO mesa (descricao, senha, idMesa) VALUES ("Mesa 12","mesa12",12);
 
+
 CREATE TABLE PEDIDO (
 idPedido INT PRIMARY KEY AUTO_INCREMENT,
-dataPedido DATETIME,
 idMesa INT,
 FOREIGN KEY(idMesa) REFERENCES MESA (idMesa)
 );
+
 
 CREATE TABLE PRODUTO (
 idProduto INT PRIMARY KEY AUTO_INCREMENT,
@@ -49,6 +55,7 @@ INSERT INTO produto VALUES (2, "Pizza 5 Queijos", "", 18.57, 0, 39.00, 1);
 INSERT INTO produto VALUES (3, "Pizza Frango", "", 18.57, 0, 34.00, 1);
 INSERT INTO produto VALUES (4, "Pizza Portuguesa", "", 18.57, 0, 35.00, 1);
 INSERT INTO produto VALUES (5, "Pizza Camarão", "", 18.57, 0, 48.00, 1);
+
 
 INSERT INTO produto VALUES (6, "X-Tudo", "", 18.57, 0, 18.00, 2);
 INSERT INTO produto VALUES (7, "X-Bacon", "", 18.57, 0, 13.00, 2);
@@ -74,6 +81,12 @@ INSERT INTO produto VALUES (23, "Sorvete de Abacaxi", "", 18.57, 0, 8.00, 5);
 INSERT INTO produto VALUES (24, "Sorvete de Limão", "", 18.57, 0, 5.00, 5);
 INSERT INTO produto VALUES (25, "Sorvete de Creme", "", 18.57, 0, 17.00, 5);
 
+INSERT INTO produto VALUES (26, "Pizza Calabresa", "", 18.57, 0, 37.49, 1);
+INSERT INTO produto VALUES (27, "X-Costela", "", 18.57, 0, 22.90, 2);
+INSERT INTO produto VALUES (28, "Suco de Goiaba", "", 18.57, 0, 5.30, 3);
+INSERT INTO produto VALUES (29, "Empadão de Carne", "", 18.57, 0, 10.60, 4);
+INSERT INTO produto VALUES (30, "Sorvete de Amendoin", "", 18.57, 0, 13.25, 5);
+
 CREATE TABLE CATEGORIA (
 idCategoria INT PRIMARY KEY AUTO_INCREMENT,
 descricao VARCHAR(60)
@@ -86,13 +99,19 @@ INSERT INTO categoria VALUES(4, "Massas");
 INSERT INTO categoria VALUES(5, "Sobremesas");
 
 CREATE TABLE ITEM_PEDIDO (
-idProduto INT,
 idPedido INT,
-idItemPedido INT PRIMARY KEY AUTO_INCREMENT,
+idProduto INT,
 quantidade INT,
-valorTotal DECIMAL(12,2),
 FOREIGN KEY(idProduto) REFERENCES PRODUTO (idProduto),
 FOREIGN KEY(idPedido) REFERENCES PEDIDO (idPedido)
 );
 
 ALTER TABLE PRODUTO ADD FOREIGN KEY(idCategoria) REFERENCES CATEGORIA (idCategoria);
+
+
+SELECT * FROM mesa;
+SELECT * FROM produto ORDER BY idProduto;
+SELECT * FROM pedido ORDER BY idPedido;
+SELECT * FROM item_pedido;
+
+
