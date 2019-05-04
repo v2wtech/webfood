@@ -71,7 +71,7 @@ let loadOrderValue = () => {
         else
             valor += parseFloat($('.priceItem span').innerHTML)
 
-    $('#btnEnviar').value = 'Confirmar (R$ ' + valor.toFixed(2) +')'
+    $('#btnEnviar').value = 'Confirmar: R$ ' + valor.toFixed(2) 
 }
 
 let updatePrice = (operator, id) => {
@@ -111,7 +111,7 @@ let updatePriceAmountV2 = (elem, operation) => {
 
             let id = item.parentNode.parentNode.id;
 
-            if(item.value != undefined)
+            if(operation[item.value] != undefined)
                 operation[item.value](id);
 
             loadOrderValue()
