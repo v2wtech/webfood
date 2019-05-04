@@ -119,7 +119,7 @@
                 </div>
 
                 <div id="footer">
-                    <input type="submit" id="btnEnviar" name="btnConfirmar" value="Confirmar">
+                    <input type="submit" id="btnEnviar" name="btnConfirmar" value="Confirmar: ">
                 </div>
             </form>
         </main>
