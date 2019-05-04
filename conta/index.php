@@ -61,9 +61,9 @@
                 <div class="order-row order-column">
                     <?php
                         echo '<div class="order_items">';
-                        echo   '<p class="textOrderItems descriptionOrderItems"><span> Descrição do Produto </span></p>';
-                        echo   '<p class="textOrderItems descriptionOrderItems"><span> Valor Total </span></p>';
+                        echo   '<p class="textOrderItems descriptionOrderItems"><span> Produto </span></p>';
                         echo   '<p class="textOrderItems descriptionOrderItems"><span> Quantidade </span></p>';
+                        echo   '<p class="textOrderItems descriptionOrderItems"><span> Valor </span></p>';
                         echo '</div>';
                          $idOrder = $_SESSION['idPedido'];
 
@@ -73,8 +73,8 @@
                              while($item = $itemsOrder->fetch(PDO::FETCH_ASSOC)){
                                 echo '<div class="order_items">';
                                 echo   '<p class="textOrderItems descriptionOrderItems"><span>' . $item['descricao'] . '</span></p>';
-                                echo   '<p class="textOrderItems descriptionOrderItems">R$ <span class="txtPriceProduct">' . $item['preco'] . '</span></p>';
                                 echo   '<p class="textOrderItems descriptionOrderItems "><span>' . $item['quantidade'] . '</span></p>';
+                                echo   '<p class="textOrderItems descriptionOrderItems">R$ <span class="txtPriceProduct">' . $item['preco'] . '</span></p>';
                                 echo '</div>';
                             }
                         
