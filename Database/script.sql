@@ -1,18 +1,6 @@
 CREATE DATABASE webfood;
 USE webfood;
 
-CREATE TABLE estabelecimento (
-id INT PRIMARY KEY AUTO_INCREMENT,
-usuario VARCHAR(30) NOT NULL UNIQUE,
-senha VARCHAR(32) NOT NULL,
-nome VARCHAR(60) NOT NULL
-);
-
-INSERT INTO estabelecimento (id, usuario, senha, nome)
-VALUES(1, "juniorpires", "1234", "Junior Pires");
-INSERT INTO estabelecimento (id, usuario, senha, nome) 
-VALUES (2, "juniorsilva", "1234", "Junior Silva");
-
 CREATE TABLE MESA (
 descricao VARCHAR(30),
 senha VARCHAR(32),
@@ -50,42 +38,42 @@ preco DECIMAL(12,2),
 idCategoria INT
 );
 
-INSERT INTO produto VALUES (1, "Pizza 4 Queijos", "", 18.57, 0, 36.00, 1);
-INSERT INTO produto VALUES (2, "Pizza 5 Queijos", "", 18.57, 0, 39.00, 1);
-INSERT INTO produto VALUES (3, "Pizza Frango", "", 18.57, 0, 34.00, 1);
-INSERT INTO produto VALUES (4, "Pizza Portuguesa", "", 18.57, 0, 35.00, 1);
-INSERT INTO produto VALUES (5, "Pizza Camarão", "", 18.57, 0, 48.00, 1);
+INSERT INTO produto VALUES (1, "Pizza 4 Queijos", "pizza.png", 18.57, 0, 36.00, 1);
+INSERT INTO produto VALUES (2, "Pizza 5 Queijos", "pizza.png", 18.57, 0, 39.00, 1);
+INSERT INTO produto VALUES (3, "Pizza Frango", "pizza.png", 18.57, 0, 34.00, 1);
+INSERT INTO produto VALUES (4, "Pizza Portuguesa", "pizza.png", 18.57, 0, 35.00, 1);
+INSERT INTO produto VALUES (5, "Pizza Camarão", "pizza.png", 18.57, 0, 48.00, 1);
 
 
-INSERT INTO produto VALUES (6, "X-Tudo", "", 18.57, 0, 18.00, 2);
-INSERT INTO produto VALUES (7, "X-Bacon", "", 18.57, 0, 13.00, 2);
-INSERT INTO produto VALUES (8, "X-Salada", "", 18.57, 0, 12.00, 2);
-INSERT INTO produto VALUES (9, "X-4Queijos", "", 18.57, 0, 15.00, 2);
-INSERT INTO produto VALUES (10, "X- Burguer Duplo", "", 18.57, 0, 26.00, 2);
+INSERT INTO produto VALUES (6, "X-Tudo", "hamburguer.png", 18.57, 0, 18.00, 2);
+INSERT INTO produto VALUES (7, "X-Bacon", "hamburguer.png", 18.57, 0, 13.00, 2);
+INSERT INTO produto VALUES (8, "X-Salada", "hamburguer.png", 18.57, 0, 12.00, 2);
+INSERT INTO produto VALUES (9, "X-4Queijos", "hamburguer.png", 18.57, 0, 15.00, 2);
+INSERT INTO produto VALUES (10, "X- Burguer Duplo", "hamburguer.png", 18.57, 0, 26.00, 2);
 
-INSERT INTO produto VALUES (11, "Suco de Laranja", "", 18.57, 0, 4.00, 3);
-INSERT INTO produto VALUES (12, "Suco de Uva", "", 18.57, 0, 4.00, 3);
-INSERT INTO produto VALUES (13, "Suco de Abacaxi com Leite", "", 18.57, 0, 6.00, 3);
-INSERT INTO produto VALUES (14, "Refrigerante", "", 18.57, 0, 3.00, 3);
-INSERT INTO produto VALUES (15, "Coca-Cola", "", 18.57, 0, 4.00, 3);
+INSERT INTO produto VALUES (11, "Suco de Laranja", "bebidas.png", 18.57, 0, 4.00, 3);
+INSERT INTO produto VALUES (12, "Suco de Uva", "bebidas.png", 18.57, 0, 4.00, 3);
+INSERT INTO produto VALUES (13, "Suco de Abacaxi com Leite", "bebidas.png", 18.57, 0, 6.00, 3);
+INSERT INTO produto VALUES (14, "Refrigerante", "bebidas.png", 18.57, 0, 3.00, 3);
+INSERT INTO produto VALUES (15, "Coca-Cola", "bebidas.png", 18.57, 0, 4.00, 3);
 
-INSERT INTO produto VALUES (16, "Macarronada com Queijo", "", 18.57, 0, 18.00, 4);
-INSERT INTO produto VALUES (17, "Macarronada com Carne", "", 18.57, 0, 15.00, 4);
-INSERT INTO produto VALUES (18, "Lasanha à Bolonhesa", "", 18.57, 0, 15.00, 4);
-INSERT INTO produto VALUES (19, "Panqueca Americana", "", 18.57, 0, 12.00, 4);
-INSERT INTO produto VALUES (20, "Empadão de Frango", "", 18.57, 0, 10.00, 4);
+INSERT INTO produto VALUES (16, "Macarronada com Queijo", "massas.png", 18.57, 0, 18.00, 4);
+INSERT INTO produto VALUES (17, "Macarronada com Carne", "massas.png", 18.57, 0, 15.00, 4);
+INSERT INTO produto VALUES (18, "Lasanha à Bolonhesa", "massas.png", 18.57, 0, 15.00, 4);
+INSERT INTO produto VALUES (19, "Panqueca Americana", "massas.png", 18.57, 0, 12.00, 4);
+INSERT INTO produto VALUES (20, "Empadão de Frango", "massas.png", 18.57, 0, 10.00, 4);
 
-INSERT INTO produto VALUES (21, "Sorvete de Morango", "", 18.57, 0, 5.00, 5);
-INSERT INTO produto VALUES (22, "Sorvete de Chocolate", "", 18.57, 0, 9.00, 5);
-INSERT INTO produto VALUES (23, "Sorvete de Abacaxi", "", 18.57, 0, 8.00, 5);
-INSERT INTO produto VALUES (24, "Sorvete de Limão", "", 18.57, 0, 5.00, 5);
-INSERT INTO produto VALUES (25, "Sorvete de Creme", "", 18.57, 0, 17.00, 5);
+INSERT INTO produto VALUES (21, "Sorvete de Morango", "sobremesa.png", 18.57, 0, 5.00, 5);
+INSERT INTO produto VALUES (22, "Sorvete de Chocolate", "sobremesa.png", 18.57, 0, 9.00, 5);
+INSERT INTO produto VALUES (23, "Sorvete de Abacaxi", "sobremesa.png", 18.57, 0, 8.00, 5);
+INSERT INTO produto VALUES (24, "Sorvete de Limão", "sobremesa.png", 18.57, 0, 5.00, 5);
+INSERT INTO produto VALUES (25, "Sorvete de Creme", "sobremesa.png", 18.57, 0, 17.00, 5);
 
-INSERT INTO produto VALUES (26, "Pizza Calabresa", "", 18.57, 0, 37.49, 1);
-INSERT INTO produto VALUES (27, "X-Costela", "", 18.57, 0, 22.90, 2);
-INSERT INTO produto VALUES (28, "Suco de Goiaba", "", 18.57, 0, 5.30, 3);
-INSERT INTO produto VALUES (29, "Empadão de Carne", "", 18.57, 0, 10.60, 4);
-INSERT INTO produto VALUES (30, "Sorvete de Amendoin", "", 18.57, 0, 13.25, 5);
+INSERT INTO produto VALUES (26, "Pizza Calabresa", "pizza.png", 18.57, 0, 37.49, 1);
+INSERT INTO produto VALUES (27, "X-Costela", "hamburguer.png", 18.57, 0, 22.90, 2);
+INSERT INTO produto VALUES (28, "Suco de Goiaba", "bebidas.png", 18.57, 0, 5.30, 3);
+INSERT INTO produto VALUES (29, "Empadão de Carne", "massas.png", 18.57, 0, 10.60, 4);
+INSERT INTO produto VALUES (30, "Sorvete de Amendoin", "sobremesa.png", 18.57, 0, 13.25, 5);
 
 CREATE TABLE CATEGORIA (
 idCategoria INT PRIMARY KEY AUTO_INCREMENT,
