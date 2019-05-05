@@ -22,6 +22,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+    <link rel="shortcut icon" type="image/x-icon" href="../src/assets/icons/webfood.ico" />
+
     <title>Webfood - Minha Conta</title>
 
     <!-- styles  -->
@@ -54,16 +56,16 @@
             <a href="../cardapio/index.php">Cardápio</a>
             <a href="../pedido/index.php">Meu Pedido</a>
             <a href="../conta/index.php">Conta</a>
-            <a href="../mesa/logout.php">Sair</a>
+            <a href="../mesa/logout.php">Fechar Conta</a>
         </div>
         
         <main id="content">    
                 <div class="order-row order-column">
                     <?php
                         echo '<div class="order_items">';
-                        echo   '<p class="textOrderItems descriptionOrderItems"><span> Descrição do Produto </span></p>';
-                        echo   '<p class="textOrderItems descriptionOrderItems"><span> Valor Total </span></p>';
+                        echo   '<p class="textOrderItems descriptionOrderItems"><span> Produto </span></p>';
                         echo   '<p class="textOrderItems descriptionOrderItems"><span> Quantidade </span></p>';
+                        echo   '<p class="textOrderItems descriptionOrderItems"><span> Valor </span></p>';
                         echo '</div>';
                          $idOrder = $_SESSION['idPedido'];
 
@@ -73,8 +75,8 @@
                              while($item = $itemsOrder->fetch(PDO::FETCH_ASSOC)){
                                 echo '<div class="order_items">';
                                 echo   '<p class="textOrderItems descriptionOrderItems"><span>' . $item['descricao'] . '</span></p>';
-                                echo   '<p class="textOrderItems descriptionOrderItems">R$ <span class="txtPriceProduct">' . $item['preco'] . '</span></p>';
                                 echo   '<p class="textOrderItems descriptionOrderItems "><span>' . $item['quantidade'] . '</span></p>';
+                                echo   '<p class="textOrderItems descriptionOrderItems">R$ <span class="txtPriceProduct">' . $item['preco'] . '</span></p>';
                                 echo '</div>';
                             }
                         

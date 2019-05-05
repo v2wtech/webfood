@@ -32,15 +32,10 @@
             background-size: cover;
             background-position: 50% 50%;
             color: #fff;
-            filter: grayscale(75%);
-            transition: .2s all;    
+            filter: grayscale(5%);
             text-shadow: 1px 1px 3px #000; 
         }
 
-        .category:hover{
-            filter: grayscale(5%);
-        }
-    
     </style>
 </head>
 <body>
@@ -61,7 +56,7 @@
             <a href="../cardapio/index.php">Cardápio</a>
             <a href="../pedido/index.php">Meu Pedido</a>
             <a href="../conta/index.php">Conta</a>
-            <a href="../mesa/logout.php">Sair</a>
+            <a href="../mesa/logout.php">Fechar Conta</a>
         </div>
 
         <main id="content">
@@ -74,13 +69,13 @@
                                     echo '<div class="products-open products-close">';
 
                                         $categoryId = $category["idCategoria"];
-                                        $products = $conn->prepare("SELECT idProduto, descricao, preco FROM produto WHERE idCategoria = $categoryId");
+                                        $products = $conn->prepare("SELECT idProduto, urlImagem, descricao, preco FROM produto WHERE idCategoria = $categoryId");
                                         
                                         if($products->execute() > 0)
                                             while($product = $products->fetch(PDO::FETCH_ASSOC)){
                                                 echo '<a href="#modal" class="product">';
                                                 echo '<input type="hidden" class="idProduct" value="'.$product["idProduto"].'">';
-                                                echo '<img src="../src/assets/produtos/teste.png" class="imageProduct">';
+                                                echo '<img src="../src/assets/produtos/' . $product["urlImagem"] . '" class="imageProduct">';
                                                 echo '<span class="descriptionProduct">'.$product["descricao"].'</span>';
                                                 echo '<span class="priceProduct"> R$ '.$product["preco"].'</span>';
                                                 echo '</a>';
@@ -130,14 +125,6 @@
             $('#btnMore').addEventListener('click', function(){
                 moreProduct();
             });
-
-
-            
-
-            
-
-            
-
         }
     </script>
 </body>
