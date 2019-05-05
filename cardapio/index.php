@@ -56,7 +56,7 @@
             <a href="../cardapio/index.php">Cardápio</a>
             <a href="../pedido/index.php">Meu Pedido</a>
             <a href="../conta/index.php">Conta</a>
-            <a href="../mesa/logout.php">Sair</a>
+            <a href="../mesa/logout.php">Fechar Conta</a>
         </div>
 
         <main id="content">

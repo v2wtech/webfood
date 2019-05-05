@@ -22,6 +22,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+    <link rel="shortcut icon" type="image/x-icon" href="../src/assets/icons/webfood.ico" />
+
     <title>Webfood - Minha Conta</title>
 
     <!-- styles  -->
@@ -54,7 +56,7 @@
             <a href="../cardapio/index.php">Cardápio</a>
             <a href="../pedido/index.php">Meu Pedido</a>
             <a href="../conta/index.php">Conta</a>
-            <a href="../mesa/logout.php">Sair</a>
+            <a href="../mesa/logout.php">Fechar Conta</a>
         </div>
         
         <main id="content">    
